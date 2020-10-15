@@ -40,15 +40,10 @@ unsigned long timerDelay = 90000;
 
 StaticJsonDocument<200> doc;
 
-StaticJsonDocument<200> upDoc;
-
 int postcount = 0;
 
 U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(/* clock=*/ 15, /* data=*/ 4, /* reset=*/ 16);
 
-int latest_temp_19 = 0.;
-int latest_ppm_19 = 0.;
-int latest_ppm_30 = 0;
 
 void setup() {
 
@@ -58,7 +53,7 @@ void setup() {
   u8x8.drawString(0, 0, "FarmOS Client!");
 
 
-  Serial.begin(9600);
+  Serial.begin(115200);
 
 
   while (!rf95.init()) {
@@ -126,31 +121,6 @@ void loop() {
       Serial.println("Parsed JSON:");
       serializeJsonPretty(doc, Serial);
       Serial.println();
-
-      Serial.print("SIZE:");
-      int mysize = measureJson(doc);
-      Serial.println(mysize);
-
-      if (mysize > 20) { // then we've got data from the MH-19 sensor
-
-          latest_temp_19 = doc["tempC_19"];
- latest_ppm_19 = doc["ppm_19"];
-      } 
-      else {
-
-        latest_ppm_30 = doc["ppm"];
-      }
-  
-      Serial.print("tempC_19=");
-      Serial.println(latest_temp_19);
-       Serial.print("ppm_19=");
-      Serial.println(latest_ppm_19);
-       Serial.print("ppm_30=");
-      Serial.println(latest_ppm_30);
-
-      upDoc["tempC_19"]=latest_temp_19;
-      upDoc["ppm_19"]=latest_ppm_19;
-      upDoc["ppm_30"]=latest_ppm_30;
       /*
         doc["temp"] = 23.5;
         doc["humidity"] = 50.2;
@@ -167,10 +137,20 @@ void loop() {
           // Your Domain name with URL path or IP address with path
           http.begin(serverName);
 
+          // Specify content-type header
+          //http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+          // Data to send with HTTP POST
+          //String httpRequestData = "api_key=tPmAT5Ab3j7F9&sensor=BME280&value1=24.25&value2=49.54&value3=1005.14";
+          // Send HTTP POST request
+          //int httpResponseCode = http.POST(httpRequestData);
+
+          // If you need an HTTP request with a content type: application/json, use the following:
           http.addHeader("Content-Type", "application/json");
 
+          //int httpResponseCode = http.POST("{\"api_key\":\"tPmAT5Ab3j7F9\",\"sensor\":\"BME280\",\"value1\":\"24.25\",\"value2\":\"49.54\",\"value3\":\"1005.14\"}");
+
           String output;
-          serializeJson(upDoc, output);
+          serializeJson(doc, output);
 
           int httpResponseCode = http.POST(output);
 

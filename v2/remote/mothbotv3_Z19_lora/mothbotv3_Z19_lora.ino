@@ -24,6 +24,8 @@ SoftwareSerial mySerial(RX_PIN, TX_PIN);                   // (Uno example) crea
 
 unsigned long getDataTimer = 0;
 
+int packetlength=80;
+
 // for mothbot RMF95
 #define RFM95_CS 8
 #define RFM95_RST 7
@@ -54,7 +56,7 @@ pinMode(mothled, OUTPUT);
     //mySerial.begin(BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN); // (ESP32 Example) device to MH-Z19 serial start   
     myMHZ19.begin(mySerial);                                // *Serial(Stream) refence must be passed to library begin(). 
 
-    myMHZ19.autoCalibration();                              // Turn auto calibration ON (OFF autoCalibration(false))
+    myMHZ19.autoCalibration(false);                              // Turn auto calibration ON (OFF autoCalibration(false))
     
   
   Serial.println("Feather LoRa TX Test!");
@@ -109,11 +111,11 @@ void loop()
         Serial.print("Temperature (C): ");                  
         Serial.println(Temp);                               
 
-  doc["sensorID"]=19;
-  doc["co2_ppm"]=CO2;
-  doc["temp_c"]=Temp;
+  //doc["sensorID"]=19;
+  doc["ppm_19"]=CO2;
+  doc["tempC_19"]=Temp;
 
-char radiopacket[50];
+char radiopacket[70];
   serializeJson(doc, radiopacket);
   
   Serial.print("Sending "); Serial.println(radiopacket);
@@ -121,7 +123,7 @@ char radiopacket[50];
   
   Serial.println("Sending...");
   delay(10);
-  rf95.send((uint8_t *)radiopacket, 40);
+  rf95.send((uint8_t *)radiopacket, 70);
 
   Serial.println("Waiting for packet to complete..."); 
   delay(10);
