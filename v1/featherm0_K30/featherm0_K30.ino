@@ -35,7 +35,7 @@ void loop()
   //Serial.print("Co2 ppm = ");
   Serial.println(valCO2);
 
-  delay(2000);
+  delay(5000);
 
   
 }

@@ -40,7 +40,7 @@ unsigned long timerDelay = 90000;
 
 StaticJsonDocument<200> doc;
 
-StaticJsonDocument<200> upDoc;
+
 
 int postcount = 0;
 
@@ -131,16 +131,24 @@ void loop() {
       int mysize = measureJson(doc);
       Serial.println(mysize);
 
+StaticJsonDocument<200> upDoc;
+
       if (mysize > 20) { // then we've got data from the MH-19 sensor
 
           latest_temp_19 = doc["tempC_19"];
  latest_ppm_19 = doc["ppm_19"];
+ 
+upDoc["tempC_19"]=doc["tempC_19"];
+      upDoc["ppm_19"]=doc["ppm_19"];
+ 
       } 
       else {
 
         latest_ppm_30 = doc["ppm"];
+        upDoc["ppm_30"]=doc["ppm"];
       }
-  
+
+  /*
       Serial.print("tempC_19=");
       Serial.println(latest_temp_19);
        Serial.print("ppm_19=");
@@ -151,6 +159,7 @@ void loop() {
       upDoc["tempC_19"]=latest_temp_19;
       upDoc["ppm_19"]=latest_ppm_19;
       upDoc["ppm_30"]=latest_ppm_30;
+      */
       /*
         doc["temp"] = 23.5;
         doc["humidity"] = 50.2;
