@@ -9,21 +9,22 @@
 #include <Wire.h>
 #include <RH_RF95.h>
 #include <ArduinoJson.h>
+#include "MHZ19.h"    
 
 #include "SoftwareSerial.h"
 
-SoftwareSerial K_30_Serial(3,4);  //Sets up a virtual serial port
-                                    //Using pin 12 for Rx and pin 13 for Tx
+#define RX_PIN 3                                          // Rx pin which the MHZ19 Tx pin is attached to
+#define TX_PIN 4                                          // Tx pin which the MHZ19 Rx pin is attached to
+#define BAUDRATE 9600                                      // Device to MH-Z19 Serial baudrate (should not be changed)
 
+MHZ19 myMHZ19;                                             // Constructor for library
 
-byte readCO2[] = {0xFE, 0X44, 0X00, 0X08, 0X02, 0X9F, 0X25};  //Command packet to read Co2 (see app note)
-byte response[] = {0,0,0,0,0,0,0};  //create an array to store the response
+SoftwareSerial mySerial(RX_PIN, TX_PIN);                   // (Uno example) create device to MH-Z19 serial
+//HardwareSerial mySerial(1);                              // (ESP32 Example) create device to MH-Z19 serial
 
-//multiplier for value. default is 1. set to 3 for K-30 3% and 10 for K-33 ICB
-int valMultiplier = 1;
+unsigned long getDataTimer = 0;
 
-
-// for mothbot
+// for mothbot RMF95
 #define RFM95_CS 8
 #define RFM95_RST 7
 #define RFM95_INT 2
@@ -46,10 +47,15 @@ pinMode(mothled, OUTPUT);
   pinMode(RFM95_RST, OUTPUT);
   digitalWrite(RFM95_RST, HIGH);
 
-
   // put your setup code here, to run once:
   Serial.begin(9600);         //Opens the main serial port to communicate with the computer
-  K_30_Serial.begin(9600);    //Opens the virtual serial port with a baud of 9600
+
+   mySerial.begin(BAUDRATE);                               // (Uno example) device to MH-Z19 serial start   
+    //mySerial.begin(BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN); // (ESP32 Example) device to MH-Z19 serial start   
+    myMHZ19.begin(mySerial);                                // *Serial(Stream) refence must be passed to library begin(). 
+
+    myMHZ19.autoCalibration();                              // Turn auto calibration ON (OFF autoCalibration(false))
+    
   
   Serial.println("Feather LoRa TX Test!");
 
@@ -84,19 +90,32 @@ pinMode(mothled, OUTPUT);
 
 void loop() 
 {
-  
-  sendRequest(readCO2);
-  unsigned long valCO2 = getValue(response);
-  //Serial.print("Co2 ppm = ");
-  Serial.println(valCO2);
 
-  doc["ppm"]=valCO2;
+  if (millis() - getDataTimer >= 2000)
+    {
+        int CO2; 
 
-char radiopacket[40];
+        /* note: getCO2() default is command "CO2 Unlimited". This returns the correct CO2 reading even 
+        if below background CO2 levels or above range (useful to validate sensor). You can use the 
+        usual documented command with getCO2(false) */
+
+        CO2 = myMHZ19.getCO2();                             // Request CO2 (as ppm)
+        
+        Serial.print("CO2 (ppm): ");                      
+        Serial.println(CO2);                                
+
+        int8_t Temp;
+        Temp = myMHZ19.getTemperature();                     // Request Temperature (as Celsius)
+        Serial.print("Temperature (C): ");                  
+        Serial.println(Temp);                               
+
+  doc["sensorID"]=19;
+  doc["co2_ppm"]=CO2;
+  doc["temp_c"]=Temp;
+
+char radiopacket[50];
   serializeJson(doc, radiopacket);
   
-  //char radiopacket[20] = "Hello World #      ";
-  //itoa(packetnum++, radiopacket+13, 10);
   Serial.print("Sending "); Serial.println(radiopacket);
   //radiopacket[19] = 0;
   
@@ -112,46 +131,7 @@ Serial.println("packet sent.");
   delay(100);                       // wait for a second
   digitalWrite(mothled, LOW);    // turn the LED off by making the voltage LOW
   delay(100);                       // wait for a second
-  
-  delay(2000);
 
-  
-}
-
-void sendRequest(byte packet[])
-{
-  while(!K_30_Serial.available())  //keep sending request until we start to get a response
-  {
-    K_30_Serial.write(readCO2,7);
-    delay(50);
-  }
-  
-  int timeout=0;  //set a timeoute counter
-  while(K_30_Serial.available() < 7 ) //Wait to get a 7 byte response
-  {
-    timeout++;  
-    if(timeout > 10)    //if it takes to long there was probably an error
-      {
-        while(K_30_Serial.available())  //flush whatever we have
-          K_30_Serial.read();
-          
-          break;                        //exit and try again
-      }
-      delay(50);
-  }
-  
-  for (int i=0; i < 7; i++)
-  {
-    response[i] = K_30_Serial.read();
-  }  
-}
-
-unsigned long getValue(byte packet[])
-{
-    int high = packet[3];                        //high byte for value is 4th byte in packet in the packet
-    int low = packet[4];                         //low byte for value is 5th byte in the packet
-
-  
-    unsigned long val = high*256 + low;                //Combine high byte and low byte with this formula to get value
-    return val* valMultiplier;
+     getDataTimer = millis();
+    }
 }
