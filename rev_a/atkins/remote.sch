@@ -513,4 +513,90 @@ Text GLabel 4625 1350 0    50   Input ~ 0
 SCL
 Text GLabel 4625 1450 0    50   Input ~ 0
 SDA
+$Comp
+L power:+3V3 #PWR0121
+U 1 1 5FC13358
+P 6250 2850
+F 0 "#PWR0121" H 6250 2700 50  0001 C CNN
+F 1 "+3V3" H 6265 3023 50  0000 C CNN
+F 2 "" H 6250 2850 50  0001 C CNN
+F 3 "" H 6250 2850 50  0001 C CNN
+	1    6250 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0122
+U 1 1 5FC1335E
+P 6250 2950
+F 0 "#PWR0122" H 6250 2700 50  0001 C CNN
+F 1 "GND" H 6255 2777 50  0000 C CNN
+F 2 "" H 6250 2950 50  0001 C CNN
+F 3 "" H 6250 2950 50  0001 C CNN
+	1    6250 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6625 2850 6250 2850
+Wire Wire Line
+	6625 2950 6250 2950
+$Comp
+L Connector:Screw_Terminal_01x05 J3
+U 1 1 5FC13366
+P 6750 3550
+F 0 "J3" H 6830 3592 50  0000 L CNN
+F 1 "UARTSCREW" V 6975 3375 50  0000 L CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-5_1x05_P5.00mm_Horizontal" H 6750 3550 50  0001 C CNN
+F 3 "~" H 6750 3550 50  0001 C CNN
+	1    6750 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x05_Female J12
+U 1 1 5FC1336C
+P 6825 2850
+F 0 "J12" H 6853 2876 50  0000 L CNN
+F 1 "UARTPINS" V 7025 2700 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 6825 2850 50  0001 C CNN
+F 3 "~" H 6825 2850 50  0001 C CNN
+	1    6825 2850
+	1    0    0    -1  
+$EndComp
+Text GLabel 6625 3050 0    50   Input ~ 0
+VBAT
+Text GLabel 6550 3750 0    50   Input ~ 0
+VBAT
+$Comp
+L power:GND #PWR0123
+U 1 1 5FC13374
+P 6200 3650
+F 0 "#PWR0123" H 6200 3400 50  0001 C CNN
+F 1 "GND" H 6205 3477 50  0000 C CNN
+F 2 "" H 6200 3650 50  0001 C CNN
+F 3 "" H 6200 3650 50  0001 C CNN
+	1    6200 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 3650 6200 3650
+$Comp
+L power:+3V3 #PWR0124
+U 1 1 5FC1337B
+P 6200 3550
+F 0 "#PWR0124" H 6200 3400 50  0001 C CNN
+F 1 "+3V3" H 6215 3723 50  0000 C CNN
+F 2 "" H 6200 3550 50  0001 C CNN
+F 3 "" H 6200 3550 50  0001 C CNN
+	1    6200 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 3550 6200 3550
+Text GLabel 6625 2750 0    50   Input ~ 0
+RX0
+Text GLabel 6625 2650 0    50   Input ~ 0
+TX1
+Text GLabel 6550 3450 0    50   Input ~ 0
+RX0
+Text GLabel 6550 3350 0    50   Input ~ 0
+TX1
 $EndSCHEMATC
