@@ -812,7 +812,7 @@
     (descr "Terminal Block Phoenix MKDS-1,5-2, 2 pins, pitch 5mm, size 10x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix")
     (tags "THT Terminal Block Phoenix MKDS-1,5-2 pitch 5mm size 10x9.8mm^2 drill 1.3mm pad 2.6mm")
     (path /5F97732E)
-    (fp_text reference J8 (at 8.705 -4.93 -90) (layer F.SilkS)
+    (fp_text reference J8 (at 7.181 -6.604) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value Screw_Terminal_01x02 (at 2.5 5.66) (layer F.Fab) hide
