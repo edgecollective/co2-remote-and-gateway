@@ -101,10 +101,10 @@ SDA
 Text GLabel 3600 4350 2    50   Input ~ 0
 SCL
 $Comp
-L Connector:Conn_01x04_Female display1
+L Connector:Conn_01x04_Female J13
 U 1 1 5F93341A
 P 2350 4275
-F 0 "display1" V 2425 4125 50  0000 L CNN
+F 0 "J13" V 2425 4125 50  0000 L CNN
 F 1 "Conn_01x04_Female" H 2378 4160 50  0001 L CNN
 F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 2350 4275 50  0001 C CNN
 F 3 "~" H 2350 4275 50  0001 C CNN
