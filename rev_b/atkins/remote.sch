@@ -1,0 +1,1016 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Conn_01x16_Female J7
+U 1 1 5F902CC6
+P 3350 1975
+F 0 "J7" H 3242 1042 50  0000 C CNN
+F 1 "Conn_01x16_Female" H 3242 1041 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x16_P2.54mm_Vertical" H 3350 1975 50  0001 C CNN
+F 3 "~" H 3350 1975 50  0001 C CNN
+	1    3350 1975
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:Conn_01x02_Female J5
+U 1 1 5F909BB4
+P 1150 1425
+F 0 "J5" H 1042 1192 50  0000 C CNN
+F 1 "Conn_01x02_Female" H 1042 1191 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 1150 1425 50  0001 C CNN
+F 3 "~" H 1150 1425 50  0001 C CNN
+	1    1150 1425
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1800 1325 1700 1325
+$Comp
+L power:GND #PWR0101
+U 1 1 5F90C11E
+P 1350 1425
+F 0 "#PWR0101" H 1350 1175 50  0001 C CNN
+F 1 "GND" H 1355 1252 50  0000 C CNN
+F 2 "" H 1350 1425 50  0001 C CNN
+F 3 "" H 1350 1425 50  0001 C CNN
+	1    1350 1425
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x12_Male J6
+U 1 1 5F901E91
+P 2950 1675
+F 0 "J6" H 2922 1603 50  0000 R CNN
+F 1 "Conn_01x12_Male" H 2922 1648 50  0001 R CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical" H 2950 1675 50  0001 C CNN
+F 3 "~" H 2950 1675 50  0001 C CNN
+	1    2950 1675
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x04 J4
+U 1 1 5F92E3AF
+P 1850 5725
+F 0 "J4" H 1768 5392 50  0000 C CNN
+F 1 "Screw_Terminal_01x04" H 1768 5391 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-4_1x04_P5.00mm_Horizontal" H 1850 5725 50  0001 C CNN
+F 3 "~" H 1850 5725 50  0001 C CNN
+	1    1850 5725
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 5F931A87
+P 2400 5525
+F 0 "#PWR0104" H 2400 5275 50  0001 C CNN
+F 1 "GND" H 2405 5352 50  0000 C CNN
+F 2 "" H 2400 5525 50  0001 C CNN
+F 3 "" H 2400 5525 50  0001 C CNN
+	1    2400 5525
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0105
+U 1 1 5F931F0C
+P 2150 5400
+F 0 "#PWR0105" H 2150 5250 50  0001 C CNN
+F 1 "+3V3" H 2165 5573 50  0000 C CNN
+F 2 "" H 2150 5400 50  0001 C CNN
+F 3 "" H 2150 5400 50  0001 C CNN
+	1    2150 5400
+	1    0    0    -1  
+$EndComp
+Text GLabel 2750 1275 0    50   Input ~ 0
+SCL
+Text GLabel 2750 1175 0    50   Input ~ 0
+SDA
+Text GLabel 2050 5825 2    50   Input ~ 0
+SDA
+Text GLabel 2050 5725 2    50   Input ~ 0
+SCL
+$Comp
+L Connector:Conn_01x04_Female J13
+U 1 1 5F93341A
+P 1725 4375
+F 0 "J13" V 1800 4225 50  0000 L CNN
+F 1 "Conn_01x04_Female" H 1753 4260 50  0001 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 1725 4375 50  0001 C CNN
+F 3 "~" H 1725 4375 50  0001 C CNN
+	1    1725 4375
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 5F934B23
+P 1200 4275
+F 0 "#PWR0106" H 1200 4025 50  0001 C CNN
+F 1 "GND" H 1205 4102 50  0000 C CNN
+F 2 "" H 1200 4275 50  0001 C CNN
+F 3 "" H 1200 4275 50  0001 C CNN
+	1    1200 4275
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0107
+U 1 1 5F934E62
+P 1375 4175
+F 0 "#PWR0107" H 1375 4025 50  0001 C CNN
+F 1 "+3V3" H 1390 4348 50  0000 C CNN
+F 2 "" H 1375 4175 50  0001 C CNN
+F 3 "" H 1375 4175 50  0001 C CNN
+	1    1375 4175
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1375 4175 1375 4375
+Wire Wire Line
+	1375 4375 1525 4375
+Text GLabel 1525 4475 0    50   Input ~ 0
+SCL
+Text GLabel 1525 4575 0    50   Input ~ 0
+SDA
+Wire Wire Line
+	1200 4275 1525 4275
+$Comp
+L power:GND #PWR0108
+U 1 1 5F9479BE
+P 3900 2375
+F 0 "#PWR0108" H 3900 2125 50  0001 C CNN
+F 1 "GND" H 3905 2202 50  0000 C CNN
+F 2 "" H 3900 2375 50  0001 C CNN
+F 3 "" H 3900 2375 50  0001 C CNN
+	1    3900 2375
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3550 2375 3900 2375
+$Comp
+L power:+3V3 #PWR0109
+U 1 1 5F94BBFE
+P 4175 2575
+F 0 "#PWR0109" H 4175 2425 50  0001 C CNN
+F 1 "+3V3" H 4190 2748 50  0000 C CNN
+F 2 "" H 4175 2575 50  0001 C CNN
+F 3 "" H 4175 2575 50  0001 C CNN
+	1    4175 2575
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3550 2575 4175 2575
+$Comp
+L Connector:Screw_Terminal_01x02 J8
+U 1 1 5F97732E
+P 1500 1900
+F 0 "J8" H 1418 1667 50  0000 C CNN
+F 1 "Screw_Terminal_01x02" H 1418 1666 50  0001 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal" H 1500 1900 50  0001 C CNN
+F 3 "~" H 1500 1900 50  0001 C CNN
+	1    1500 1900
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0112
+U 1 1 5F97924E
+P 1700 1900
+F 0 "#PWR0112" H 1700 1650 50  0001 C CNN
+F 1 "GND" H 1705 1727 50  0000 C CNN
+F 2 "" H 1700 1900 50  0001 C CNN
+F 3 "" H 1700 1900 50  0001 C CNN
+	1    1700 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 1800 1700 1325
+Connection ~ 1700 1325
+Wire Wire Line
+	1700 1325 1350 1325
+$Comp
+L Device:R R2
+U 1 1 5F989DB1
+P 1300 3175
+F 0 "R2" H 1370 3221 50  0000 L CNN
+F 1 "R" H 1370 3130 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1230 3175 50  0001 C CNN
+F 3 "~" H 1300 3175 50  0001 C CNN
+	1    1300 3175
+	1    0    0    -1  
+$EndComp
+Text GLabel 1300 3325 0    50   Input ~ 0
+SCL
+$Comp
+L power:+3V3 #PWR0113
+U 1 1 5F98B87C
+P 1300 3025
+F 0 "#PWR0113" H 1300 2875 50  0001 C CNN
+F 1 "+3V3" H 1315 3198 50  0000 C CNN
+F 2 "" H 1300 3025 50  0001 C CNN
+F 3 "" H 1300 3025 50  0001 C CNN
+	1    1300 3025
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5F98BC9A
+P 1675 3200
+F 0 "R3" H 1745 3246 50  0000 L CNN
+F 1 "R" H 1745 3155 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1605 3200 50  0001 C CNN
+F 3 "~" H 1675 3200 50  0001 C CNN
+	1    1675 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0114
+U 1 1 5F98C06B
+P 1675 3050
+F 0 "#PWR0114" H 1675 2900 50  0001 C CNN
+F 1 "+3V3" H 1690 3223 50  0000 C CNN
+F 2 "" H 1675 3050 50  0001 C CNN
+F 3 "" H 1675 3050 50  0001 C CNN
+	1    1675 3050
+	1    0    0    -1  
+$EndComp
+Text GLabel 1675 3350 0    50   Input ~ 0
+SDA
+$Comp
+L power:+3V3 #PWR0115
+U 1 1 5F996AAC
+P 5875 1675
+F 0 "#PWR0115" H 5875 1525 50  0001 C CNN
+F 1 "+3V3" V 5890 1803 50  0000 L CNN
+F 2 "" H 5875 1675 50  0001 C CNN
+F 3 "" H 5875 1675 50  0001 C CNN
+	1    5875 1675
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0116
+U 1 1 5F997480
+P 6075 2075
+F 0 "#PWR0116" H 6075 1825 50  0001 C CNN
+F 1 "GND" H 6080 1902 50  0000 C CNN
+F 2 "" H 6075 2075 50  0001 C CNN
+F 3 "" H 6075 2075 50  0001 C CNN
+	1    6075 2075
+	0    -1   -1   0   
+$EndComp
+Text GLabel 6175 1675 3    50   Input ~ 0
+SCL
+Text GLabel 6375 1675 3    50   Input ~ 0
+SDA
+Wire Wire Line
+	6075 2075 6075 1675
+$Comp
+L Connector:Conn_01x04_Female J10
+U 1 1 5F9B61C7
+P 1625 5650
+F 0 "J10" H 1653 5580 50  0000 L CNN
+F 1 "Conn_01x04_Female" H 1653 5535 50  0001 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 1625 5650 50  0001 C CNN
+F 3 "~" H 1625 5650 50  0001 C CNN
+	1    1625 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0117
+U 1 1 5F9B61CD
+P 1100 5550
+F 0 "#PWR0117" H 1100 5300 50  0001 C CNN
+F 1 "GND" H 1105 5377 50  0000 C CNN
+F 2 "" H 1100 5550 50  0001 C CNN
+F 3 "" H 1100 5550 50  0001 C CNN
+	1    1100 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0118
+U 1 1 5F9B61D3
+P 1275 5450
+F 0 "#PWR0118" H 1275 5300 50  0001 C CNN
+F 1 "+3V3" H 1290 5623 50  0000 C CNN
+F 2 "" H 1275 5450 50  0001 C CNN
+F 3 "" H 1275 5450 50  0001 C CNN
+	1    1275 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1275 5450 1275 5650
+Wire Wire Line
+	1275 5650 1425 5650
+Text GLabel 1425 5750 0    50   Input ~ 0
+SCL
+Text GLabel 1425 5850 0    50   Input ~ 0
+SDA
+Wire Wire Line
+	1100 5550 1425 5550
+Wire Wire Line
+	2150 5400 2150 5625
+Wire Wire Line
+	2150 5625 2050 5625
+Wire Wire Line
+	2050 5525 2400 5525
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5F9CF16D
+P 5150 2550
+F 0 "H1" H 5250 2596 50  0000 L CNN
+F 1 "MountingHole" H 5250 2505 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 2550 50  0001 C CNN
+F 3 "~" H 5150 2550 50  0001 C CNN
+	1    5150 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5F9CF5FF
+P 5150 2775
+F 0 "H2" H 5250 2821 50  0000 L CNN
+F 1 "MountingHole" H 5250 2730 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 2775 50  0001 C CNN
+F 3 "~" H 5150 2775 50  0001 C CNN
+	1    5150 2775
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5F9CFBAC
+P 5150 3000
+F 0 "H3" H 5250 3046 50  0000 L CNN
+F 1 "MountingHole" H 5250 2955 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 3000 50  0001 C CNN
+F 3 "~" H 5150 3000 50  0001 C CNN
+	1    5150 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 5F9D006D
+P 5150 3225
+F 0 "H4" H 5250 3271 50  0000 L CNN
+F 1 "MountingHole" H 5250 3180 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 3225 50  0001 C CNN
+F 3 "~" H 5150 3225 50  0001 C CNN
+	1    5150 3225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x08_Female J11
+U 1 1 5FADE7E5
+P 6175 1475
+F 0 "J11" V 6340 1405 50  0000 C CNN
+F 1 "BME390" V 6249 1405 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical" H 6175 1475 50  0001 C CNN
+F 3 "~" H 6175 1475 50  0001 C CNN
+	1    6175 1475
+	0    -1   -1   0   
+$EndComp
+Text GLabel 3550 1375 2    50   Input ~ 0
+RX0
+Text GLabel 3550 1275 2    50   Input ~ 0
+TX1
+Text GLabel 2750 2275 0    50   Input ~ 0
+VBAT
+Text GLabel 1800 1325 1    50   Input ~ 0
+VBAT
+Text GLabel 2750 1775 0    50   Input ~ 0
+D11
+Text GLabel 2750 1675 0    50   Input ~ 0
+D10
+$Comp
+L Connector:Conn_01x07_Female J9
+U 1 1 5FB57B67
+P 5025 1575
+F 0 "J9" H 5053 1601 50  0000 L CNN
+F 1 "SCD30" H 5053 1510 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x07_P2.54mm_Vertical" H 5025 1575 50  0001 C CNN
+F 3 "~" H 5025 1575 50  0001 C CNN
+	1    5025 1575
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0119
+U 1 1 5FBA156B
+P 4825 1275
+F 0 "#PWR0119" H 4825 1125 50  0001 C CNN
+F 1 "+3V3" H 4840 1448 50  0000 C CNN
+F 2 "" H 4825 1275 50  0001 C CNN
+F 3 "" H 4825 1275 50  0001 C CNN
+	1    4825 1275
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0120
+U 1 1 5FBA258D
+P 4475 1375
+F 0 "#PWR0120" H 4475 1125 50  0001 C CNN
+F 1 "GND" H 4480 1202 50  0000 C CNN
+F 2 "" H 4475 1375 50  0001 C CNN
+F 3 "" H 4475 1375 50  0001 C CNN
+	1    4475 1375
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4825 1375 4475 1375
+Text GLabel 4825 1475 0    50   Input ~ 0
+SCL
+Text GLabel 4825 1575 0    50   Input ~ 0
+SDA
+$Comp
+L power:+3V3 #PWR0121
+U 1 1 5FC13358
+P 2600 3525
+F 0 "#PWR0121" H 2600 3375 50  0001 C CNN
+F 1 "+3V3" H 2615 3698 50  0000 C CNN
+F 2 "" H 2600 3525 50  0001 C CNN
+F 3 "" H 2600 3525 50  0001 C CNN
+	1    2600 3525
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0122
+U 1 1 5FC1335E
+P 2600 3625
+F 0 "#PWR0122" H 2600 3375 50  0001 C CNN
+F 1 "GND" H 2605 3452 50  0000 C CNN
+F 2 "" H 2600 3625 50  0001 C CNN
+F 3 "" H 2600 3625 50  0001 C CNN
+	1    2600 3625
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2975 3525 2600 3525
+Wire Wire Line
+	2975 3625 2600 3625
+$Comp
+L Connector:Screw_Terminal_01x05 J3
+U 1 1 5FC13366
+P 3100 4225
+F 0 "J3" H 3180 4267 50  0000 L CNN
+F 1 "UARTSCREW" V 3325 4050 50  0000 L CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-5_1x05_P5.00mm_Horizontal" H 3100 4225 50  0001 C CNN
+F 3 "~" H 3100 4225 50  0001 C CNN
+	1    3100 4225
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x05_Female J12
+U 1 1 5FC1336C
+P 3175 3525
+F 0 "J12" H 3203 3551 50  0000 L CNN
+F 1 "UARTPINS" V 3375 3375 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 3175 3525 50  0001 C CNN
+F 3 "~" H 3175 3525 50  0001 C CNN
+	1    3175 3525
+	1    0    0    -1  
+$EndComp
+Text GLabel 2975 3725 0    50   Input ~ 0
+VBAT
+Text GLabel 2900 4425 0    50   Input ~ 0
+VBAT
+$Comp
+L power:GND #PWR0123
+U 1 1 5FC13374
+P 2550 4325
+F 0 "#PWR0123" H 2550 4075 50  0001 C CNN
+F 1 "GND" H 2555 4152 50  0000 C CNN
+F 2 "" H 2550 4325 50  0001 C CNN
+F 3 "" H 2550 4325 50  0001 C CNN
+	1    2550 4325
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2900 4325 2550 4325
+$Comp
+L power:+3V3 #PWR0124
+U 1 1 5FC1337B
+P 2550 4225
+F 0 "#PWR0124" H 2550 4075 50  0001 C CNN
+F 1 "+3V3" H 2565 4398 50  0000 C CNN
+F 2 "" H 2550 4225 50  0001 C CNN
+F 3 "" H 2550 4225 50  0001 C CNN
+	1    2550 4225
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2900 4225 2550 4225
+Text GLabel 2975 3425 0    50   Input ~ 0
+RX0
+Text GLabel 2975 3325 0    50   Input ~ 0
+TX1
+Text GLabel 2900 4125 0    50   Input ~ 0
+RX0
+Text GLabel 2900 4025 0    50   Input ~ 0
+TX1
+Text Notes 3800 3150 0    79   ~ 0
+UART #2
+Text GLabel 4100 3450 0    50   Input ~ 0
+D11
+Text GLabel 4100 3350 0    50   Input ~ 0
+D10
+Text GLabel 4100 3750 0    50   Input ~ 0
+VBAT
+$Comp
+L Connector:Conn_01x05_Female J2
+U 1 1 5FB1B051
+P 4300 3550
+F 0 "J2" H 4328 3576 50  0000 L CNN
+F 1 "UARTPINS" V 4450 3375 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 4300 3550 50  0001 C CNN
+F 3 "~" H 4300 3550 50  0001 C CNN
+	1    4300 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 3650 3725 3650
+Wire Wire Line
+	4100 3550 3725 3550
+$Comp
+L power:GND #PWR0103
+U 1 1 5FB0A80A
+P 3725 3650
+F 0 "#PWR0103" H 3725 3400 50  0001 C CNN
+F 1 "GND" H 3730 3477 50  0000 C CNN
+F 2 "" H 3725 3650 50  0001 C CNN
+F 3 "" H 3725 3650 50  0001 C CNN
+	1    3725 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0102
+U 1 1 5FB09067
+P 3725 3550
+F 0 "#PWR0102" H 3725 3400 50  0001 C CNN
+F 1 "+3V3" H 3740 3723 50  0000 C CNN
+F 2 "" H 3725 3550 50  0001 C CNN
+F 3 "" H 3725 3550 50  0001 C CNN
+	1    3725 3550
+	1    0    0    -1  
+$EndComp
+Text GLabel 4025 4150 0    50   Input ~ 0
+D11
+Text GLabel 4025 4050 0    50   Input ~ 0
+D10
+Wire Wire Line
+	4025 4250 3675 4250
+$Comp
+L power:+3V3 #PWR0111
+U 1 1 5FB29CB4
+P 3675 4250
+F 0 "#PWR0111" H 3675 4100 50  0001 C CNN
+F 1 "+3V3" H 3690 4423 50  0000 C CNN
+F 2 "" H 3675 4250 50  0001 C CNN
+F 3 "" H 3675 4250 50  0001 C CNN
+	1    3675 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4025 4350 3675 4350
+$Comp
+L power:GND #PWR0110
+U 1 1 5FB28533
+P 3675 4350
+F 0 "#PWR0110" H 3675 4100 50  0001 C CNN
+F 1 "GND" H 3680 4177 50  0000 C CNN
+F 2 "" H 3675 4350 50  0001 C CNN
+F 3 "" H 3675 4350 50  0001 C CNN
+	1    3675 4350
+	1    0    0    -1  
+$EndComp
+Text GLabel 4025 4450 0    50   Input ~ 0
+VBAT
+$Comp
+L Connector:Screw_Terminal_01x05 J1
+U 1 1 5FB192EA
+P 4225 4250
+F 0 "J1" H 4305 4292 50  0000 L CNN
+F 1 "UARTSCREW" V 4425 4050 50  0000 L CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-5_1x05_P5.00mm_Horizontal" H 4225 4250 50  0001 C CNN
+F 3 "~" H 4225 4250 50  0001 C CNN
+	1    4225 4250
+	1    0    0    -1  
+$EndComp
+Text Notes 2700 3150 0    79   ~ 0
+UART #1
+Text Notes 1275 1000 0    79   ~ 0
+POWER IN
+Text Notes 2850 925  0    79   ~ 0
+FEATHER
+Text Notes 1100 3875 0    79   ~ 0
+i2c OLED
+Text Notes 1425 5025 0    79   ~ 0
+i2c Terminal
+Text Notes 1125 2600 0    79   ~ 0
+i2c pullups
+Text Notes 4650 1000 0    79   ~ 0
+SCD30
+Text Notes 6000 1150 0    79   ~ 0
+BME388/90
+Text GLabel 3550 1975 2    50   Input ~ 0
+A3
+Text GLabel 3550 1875 2    50   Input ~ 0
+A4
+Text GLabel 3550 1775 2    50   Input ~ 0
+A5
+Text GLabel 3550 2075 2    50   Input ~ 0
+A2
+Text GLabel 3550 2175 2    50   Input ~ 0
+A1
+Text GLabel 3550 2275 2    50   Input ~ 0
+A0
+$Comp
+L Switch:SW_Push_Dual SW5
+U 1 1 5FB4FE97
+P 7150 3600
+F 0 "SW5" H 7150 3885 50  0000 C CNN
+F 1 "SW_Push_Dual" H 7275 3800 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7150 3800 50  0001 C CNN
+F 3 "~" H 7150 3800 50  0001 C CNN
+	1    7150 3600
+	1    0    0    -1  
+$EndComp
+Text GLabel 6725 3600 0    50   Input ~ 0
+A5
+$Comp
+L power:GND #PWR0125
+U 1 1 5FB775EC
+P 7350 3800
+F 0 "#PWR0125" H 7350 3550 50  0001 C CNN
+F 1 "GND" H 7355 3627 50  0000 C CNN
+F 2 "" H 7350 3800 50  0001 C CNN
+F 3 "" H 7350 3800 50  0001 C CNN
+	1    7350 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0126
+U 1 1 5FB7822F
+P 6725 3200
+F 0 "#PWR0126" H 6725 3050 50  0001 C CNN
+F 1 "+3V3" H 6740 3373 50  0000 C CNN
+F 2 "" H 6725 3200 50  0001 C CNN
+F 3 "" H 6725 3200 50  0001 C CNN
+	1    6725 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R RS5
+U 1 1 5FB84FFC
+P 6725 3350
+F 0 "RS5" H 6795 3396 50  0000 L CNN
+F 1 "10K" H 6795 3305 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6655 3350 50  0001 C CNN
+F 3 "~" H 6725 3350 50  0001 C CNN
+	1    6725 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6725 3600 6725 3500
+Wire Wire Line
+	6950 3600 6725 3600
+Wire Wire Line
+	6950 3600 6950 3450
+Wire Wire Line
+	6950 3450 7350 3450
+Wire Wire Line
+	7350 3450 7350 3600
+Connection ~ 6950 3600
+Wire Wire Line
+	6950 3800 6950 3675
+Wire Wire Line
+	6950 3675 7350 3675
+Wire Wire Line
+	7350 3675 7350 3800
+Connection ~ 7350 3800
+$Comp
+L Switch:SW_Push_Dual SW4
+U 1 1 5FBA3678
+P 7125 4650
+F 0 "SW4" H 7125 4935 50  0000 C CNN
+F 1 "SW_Push_Dual" H 7250 4850 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7125 4850 50  0001 C CNN
+F 3 "~" H 7125 4850 50  0001 C CNN
+	1    7125 4650
+	1    0    0    -1  
+$EndComp
+Text GLabel 6700 4650 0    50   Input ~ 0
+A4
+$Comp
+L power:GND #PWR0127
+U 1 1 5FBA367F
+P 7325 4850
+F 0 "#PWR0127" H 7325 4600 50  0001 C CNN
+F 1 "GND" H 7330 4677 50  0000 C CNN
+F 2 "" H 7325 4850 50  0001 C CNN
+F 3 "" H 7325 4850 50  0001 C CNN
+	1    7325 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0128
+U 1 1 5FBA3685
+P 6700 4250
+F 0 "#PWR0128" H 6700 4100 50  0001 C CNN
+F 1 "+3V3" H 6715 4423 50  0000 C CNN
+F 2 "" H 6700 4250 50  0001 C CNN
+F 3 "" H 6700 4250 50  0001 C CNN
+	1    6700 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R RS4
+U 1 1 5FBA368B
+P 6700 4400
+F 0 "RS4" H 6770 4446 50  0000 L CNN
+F 1 "10K" H 6770 4355 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6630 4400 50  0001 C CNN
+F 3 "~" H 6700 4400 50  0001 C CNN
+	1    6700 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 4650 6700 4550
+Wire Wire Line
+	6925 4650 6700 4650
+Wire Wire Line
+	6925 4650 6925 4500
+Wire Wire Line
+	6925 4500 7325 4500
+Wire Wire Line
+	7325 4500 7325 4650
+Connection ~ 6925 4650
+Wire Wire Line
+	6925 4850 6925 4725
+Wire Wire Line
+	6925 4725 7325 4725
+Wire Wire Line
+	7325 4725 7325 4850
+Connection ~ 7325 4850
+$Comp
+L Switch:SW_Push_Dual SW3
+U 1 1 5FBA499A
+P 8425 3650
+F 0 "SW3" H 8425 3935 50  0000 C CNN
+F 1 "SW_Push_Dual" H 8550 3850 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8425 3850 50  0001 C CNN
+F 3 "~" H 8425 3850 50  0001 C CNN
+	1    8425 3650
+	1    0    0    -1  
+$EndComp
+Text GLabel 8000 3650 0    50   Input ~ 0
+A3
+$Comp
+L power:GND #PWR0129
+U 1 1 5FBA49A1
+P 8625 3850
+F 0 "#PWR0129" H 8625 3600 50  0001 C CNN
+F 1 "GND" H 8630 3677 50  0000 C CNN
+F 2 "" H 8625 3850 50  0001 C CNN
+F 3 "" H 8625 3850 50  0001 C CNN
+	1    8625 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0130
+U 1 1 5FBA49A7
+P 8000 3250
+F 0 "#PWR0130" H 8000 3100 50  0001 C CNN
+F 1 "+3V3" H 8015 3423 50  0000 C CNN
+F 2 "" H 8000 3250 50  0001 C CNN
+F 3 "" H 8000 3250 50  0001 C CNN
+	1    8000 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R RS3
+U 1 1 5FBA49AD
+P 8000 3400
+F 0 "RS3" H 8070 3446 50  0000 L CNN
+F 1 "10K" H 8070 3355 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7930 3400 50  0001 C CNN
+F 3 "~" H 8000 3400 50  0001 C CNN
+	1    8000 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 3650 8000 3550
+Wire Wire Line
+	8225 3650 8000 3650
+Wire Wire Line
+	8225 3650 8225 3500
+Wire Wire Line
+	8225 3500 8625 3500
+Wire Wire Line
+	8625 3500 8625 3650
+Connection ~ 8225 3650
+Wire Wire Line
+	8225 3850 8225 3725
+Wire Wire Line
+	8225 3725 8625 3725
+Wire Wire Line
+	8625 3725 8625 3850
+Connection ~ 8625 3850
+$Comp
+L Switch:SW_Push_Dual SW2
+U 1 1 5FBA59B8
+P 8350 4700
+F 0 "SW2" H 8350 4985 50  0000 C CNN
+F 1 "SW_Push_Dual" H 8475 4900 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8350 4900 50  0001 C CNN
+F 3 "~" H 8350 4900 50  0001 C CNN
+	1    8350 4700
+	1    0    0    -1  
+$EndComp
+Text GLabel 7925 4700 0    50   Input ~ 0
+A2
+$Comp
+L power:GND #PWR0131
+U 1 1 5FBA59BF
+P 8550 4900
+F 0 "#PWR0131" H 8550 4650 50  0001 C CNN
+F 1 "GND" H 8555 4727 50  0000 C CNN
+F 2 "" H 8550 4900 50  0001 C CNN
+F 3 "" H 8550 4900 50  0001 C CNN
+	1    8550 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0132
+U 1 1 5FBA59C5
+P 7925 4300
+F 0 "#PWR0132" H 7925 4150 50  0001 C CNN
+F 1 "+3V3" H 7940 4473 50  0000 C CNN
+F 2 "" H 7925 4300 50  0001 C CNN
+F 3 "" H 7925 4300 50  0001 C CNN
+	1    7925 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R RS2
+U 1 1 5FBA59CB
+P 7925 4450
+F 0 "RS2" H 7995 4496 50  0000 L CNN
+F 1 "10K" H 7995 4405 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7855 4450 50  0001 C CNN
+F 3 "~" H 7925 4450 50  0001 C CNN
+	1    7925 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7925 4700 7925 4600
+Wire Wire Line
+	8150 4700 7925 4700
+Wire Wire Line
+	8150 4700 8150 4550
+Wire Wire Line
+	8150 4550 8550 4550
+Wire Wire Line
+	8550 4550 8550 4700
+Connection ~ 8150 4700
+Wire Wire Line
+	8150 4900 8150 4775
+Wire Wire Line
+	8150 4775 8550 4775
+Wire Wire Line
+	8550 4775 8550 4900
+Connection ~ 8550 4900
+$Comp
+L Switch:SW_Push_Dual SW1
+U 1 1 5FBA6963
+P 9575 3675
+F 0 "SW1" H 9575 3960 50  0000 C CNN
+F 1 "SW_Push_Dual" H 9700 3875 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 9575 3875 50  0001 C CNN
+F 3 "~" H 9575 3875 50  0001 C CNN
+	1    9575 3675
+	1    0    0    -1  
+$EndComp
+Text GLabel 9150 3675 0    50   Input ~ 0
+A1
+$Comp
+L power:GND #PWR0133
+U 1 1 5FBA696A
+P 9775 3875
+F 0 "#PWR0133" H 9775 3625 50  0001 C CNN
+F 1 "GND" H 9780 3702 50  0000 C CNN
+F 2 "" H 9775 3875 50  0001 C CNN
+F 3 "" H 9775 3875 50  0001 C CNN
+	1    9775 3875
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0134
+U 1 1 5FBA6970
+P 9150 3275
+F 0 "#PWR0134" H 9150 3125 50  0001 C CNN
+F 1 "+3V3" H 9165 3448 50  0000 C CNN
+F 2 "" H 9150 3275 50  0001 C CNN
+F 3 "" H 9150 3275 50  0001 C CNN
+	1    9150 3275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R RS1
+U 1 1 5FBA6976
+P 9150 3425
+F 0 "RS1" H 9220 3471 50  0000 L CNN
+F 1 "10K" H 9220 3380 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9080 3425 50  0001 C CNN
+F 3 "~" H 9150 3425 50  0001 C CNN
+	1    9150 3425
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9150 3675 9150 3575
+Wire Wire Line
+	9375 3675 9150 3675
+Wire Wire Line
+	9375 3675 9375 3525
+Wire Wire Line
+	9375 3525 9775 3525
+Wire Wire Line
+	9775 3525 9775 3675
+Connection ~ 9375 3675
+Wire Wire Line
+	9375 3875 9375 3750
+Wire Wire Line
+	9375 3750 9775 3750
+Wire Wire Line
+	9775 3750 9775 3875
+Connection ~ 9775 3875
+$Comp
+L Switch:SW_Push_Dual SW0
+U 1 1 5FBA90A9
+P 9575 4725
+F 0 "SW0" H 9575 5010 50  0000 C CNN
+F 1 "SW_Push_Dual" H 9700 4925 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 9575 4925 50  0001 C CNN
+F 3 "~" H 9575 4925 50  0001 C CNN
+	1    9575 4725
+	1    0    0    -1  
+$EndComp
+Text GLabel 9150 4725 0    50   Input ~ 0
+A0
+$Comp
+L power:GND #PWR0135
+U 1 1 5FBA90B0
+P 9775 4925
+F 0 "#PWR0135" H 9775 4675 50  0001 C CNN
+F 1 "GND" H 9780 4752 50  0000 C CNN
+F 2 "" H 9775 4925 50  0001 C CNN
+F 3 "" H 9775 4925 50  0001 C CNN
+	1    9775 4925
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0136
+U 1 1 5FBA90B6
+P 9150 4325
+F 0 "#PWR0136" H 9150 4175 50  0001 C CNN
+F 1 "+3V3" H 9165 4498 50  0000 C CNN
+F 2 "" H 9150 4325 50  0001 C CNN
+F 3 "" H 9150 4325 50  0001 C CNN
+	1    9150 4325
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R RS0
+U 1 1 5FBA90BC
+P 9150 4475
+F 0 "RS0" H 9220 4521 50  0000 L CNN
+F 1 "10K" H 9220 4430 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9080 4475 50  0001 C CNN
+F 3 "~" H 9150 4475 50  0001 C CNN
+	1    9150 4475
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9150 4725 9150 4625
+Wire Wire Line
+	9375 4725 9150 4725
+Wire Wire Line
+	9375 4725 9375 4575
+Wire Wire Line
+	9375 4575 9775 4575
+Wire Wire Line
+	9775 4575 9775 4725
+Connection ~ 9375 4725
+Wire Wire Line
+	9375 4925 9375 4800
+Wire Wire Line
+	9375 4800 9775 4800
+Wire Wire Line
+	9775 4800 9775 4925
+Connection ~ 9775 4925
+$EndSCHEMATC
