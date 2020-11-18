@@ -558,4 +558,17 @@ Text GLabel 3725 1900 2    50   Input ~ 0
 38
 Text GLabel 3725 2000 2    50   Input ~ 0
 39
+$Comp
+L power:GND #PWR?
+U 1 1 5FCB87E3
+P 3975 1400
+F 0 "#PWR?" H 3975 1150 50  0001 C CNN
+F 1 "GND" H 3980 1227 50  0000 C CNN
+F 2 "" H 3975 1400 50  0001 C CNN
+F 3 "" H 3975 1400 50  0001 C CNN
+	1    3975 1400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3975 1400 3725 1400
 $EndSCHEMATC
