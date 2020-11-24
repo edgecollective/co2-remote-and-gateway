@@ -25,7 +25,6 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 #define delaytime 3000
 
-DynamicJsonDocument doc(2048);
  
 
 // for feather m0  
@@ -111,10 +110,9 @@ void loop()
 
  if (airSensor.dataAvailable())
   {
-
     int co2 = airSensor.getCO2();
-    float temp = airSensor.getTemperature();
-    float humid = airSensor.getHumidity();
+    float temp = roundf(airSensor.getTemperature()* 100) / 100;
+    float humid = roundf(airSensor.getHumidity()* 100) / 100;
     
     Serial.print("co2(ppm):");
     Serial.print(co2);
@@ -132,6 +130,8 @@ measuredvbat *= 2;    // we divided by 2, so multiply back
 measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
 measuredvbat /= 1024; // convert to voltage
 Serial.print("VBat: " ); Serial.println(measuredvbat);
+
+DynamicJsonDocument doc(1024);
 
 doc["deviceId"] =  sensorID;
 JsonObject fields = doc.createNestedObject("fields");

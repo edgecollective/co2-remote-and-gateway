@@ -506,7 +506,7 @@ U 1 1 5FB5C186
 P 3350 2200
 F 0 "J1" H 3250 3125 50  0000 L CNN
 F 1 "Conn_01x18_Female" V 3425 1925 50  0001 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x18_P2.54mm_Vertical" H 3350 2200 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x18_P2.54mm_Vertical" H 3350 2200 50  0001 C CNN
 F 3 "~" H 3350 2200 50  0001 C CNN
 	1    3350 2200
 	1    0    0    -1  
@@ -517,7 +517,7 @@ U 1 1 5FB65139
 P 3525 2200
 F 0 "J2" H 3417 3093 50  0000 C CNN
 F 1 "Conn_01x18_Female" H 3417 3094 50  0001 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x18_P2.54mm_Vertical" H 3525 2200 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x18_P2.54mm_Vertical" H 3525 2200 50  0001 C CNN
 F 3 "~" H 3525 2200 50  0001 C CNN
 	1    3525 2200
 	-1   0    0    -1  
@@ -559,10 +559,10 @@ Text GLabel 3725 1900 2    50   Input ~ 0
 Text GLabel 3725 2000 2    50   Input ~ 0
 39
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0104
 U 1 1 5FCB87E3
 P 3975 1400
-F 0 "#PWR?" H 3975 1150 50  0001 C CNN
+F 0 "#PWR0104" H 3975 1150 50  0001 C CNN
 F 1 "GND" H 3980 1227 50  0000 C CNN
 F 2 "" H 3975 1400 50  0001 C CNN
 F 3 "" H 3975 1400 50  0001 C CNN
