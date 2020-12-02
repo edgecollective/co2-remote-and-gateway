@@ -47,6 +47,8 @@ SCD30 airSensor;
 const int sampleWindow = 10000; // Sample window width in mS (50 mS = 20Hz)
 unsigned int sample;
 
+float mic_level;
+
 void setup() 
 {
 
@@ -157,7 +159,7 @@ void loop()
    peakToPeak = signalMax - signalMin;  // max - min = peak-peak amplitude
    double volts = (peakToPeak * 3.3) / 1024;  // convert to volts
 
-float mic_level = roundf(volts* 100) / 100;
+mic_level = roundf(volts* 100) / 100;
 
     Serial.print("Mic level was: ");
     Serial.print(volts);
@@ -217,12 +219,13 @@ void set_text(float temp, float humid, int co2, float batt) {
   display.print("Temperature ");
   display.print(temp);
   display.println(" C");
-  display.println();
   display.print("Humidity    ");
   display.print(humid);
   display.println(" %");
-  display.println();
-  display.print("Battery     ");
+  display.print("Microphone   ");
+  display.print(mic_level);
+  display.println(" V");
+  display.print("Battery      ");
   display.print(batt);
   display.print(" V");
   display.display();

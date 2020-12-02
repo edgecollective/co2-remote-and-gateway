@@ -1,0 +1,82 @@
+Info: Backing up file "/home/dwblair/gitwork/hog32/sym-lib-table" to file "/home/dwblair/gitwork/hog32/rescue-backup/sym-lib-table-2020-12-01-13-57-21".
+Info: Backing up file "/home/dwblair/gitwork/hog32/hog32.sch" to file "/home/dwblair/gitwork/hog32/rescue-backup/hog32-2020-12-01-13-57-21.sch".
+Info: Backing up file "/home/dwblair/gitwork/hog32/hog32.pro" to file "/home/dwblair/gitwork/hog32/rescue-backup/hog32-2020-12-01-13-57-21.pro".
+Info: Backing up file "/home/dwblair/gitwork/hog32/hog32-cache.lib" to file "/home/dwblair/gitwork/hog32/rescue-backup/hog32-cache-2020-12-01-13-57-21.lib".
+Info: Backing up file "/home/dwblair/gitwork/hog32/hog32-rescue.lib" to file "/home/dwblair/gitwork/hog32/rescue-backup/hog32-rescue-2020-12-01-13-57-21.lib".
+Info: Backing up file "/home/dwblair/gitwork/hog32/hog32-rescue.dcm" to file "/home/dwblair/gitwork/hog32/rescue-backup/hog32-rescue-2020-12-01-13-57-21.dcm".
+Info: Adding library "hog32-rescue", file "${KIPRJMOD}/hog32-rescue.lib" to project symbol library table.
+Symbol "RFM95HW" mapped to symbol library "hog32-rescue".
+Symbol "ESP32-WROOM" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x03" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "C" mapped to symbol library "hog32-rescue".
+Symbol "C" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "Q_NPN_CBE" mapped to symbol library "hog32-rescue".
+Symbol "R" mapped to symbol library "hog32-rescue".
+Symbol "Q_NPN_CBE" mapped to symbol library "hog32-rescue".
+Symbol "R" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x07" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "SW_Push" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "R" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "C" mapped to symbol library "hog32-rescue".
+Symbol "SW_Push" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "R" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "C" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x07" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x04" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x01" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x03" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x04" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "R" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x02" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "R" mapped to symbol library "hog32-rescue".
+Symbol "R" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x03" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "C" mapped to symbol library "hog32-rescue".
+Symbol "C" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "+5V" mapped to symbol library "hog32-rescue".
+Symbol "+5V" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "+5V" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x04" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x12" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x05" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x08" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x06" mapped to symbol library "hog32-rescue".
+Symbol "R" mapped to symbol library "hog32-rescue".
+Symbol "Conn_01x06" mapped to symbol library "hog32-rescue".
+Symbol "+3V3" mapped to symbol library "hog32-rescue".
+Symbol "Conn_02x03_Odd_Even" mapped to symbol library "hog32-rescue".
+Symbol "GND" mapped to symbol library "hog32-rescue".
+Symbol "D" mapped to symbol library "hog32-rescue".
+Symbol "D" mapped to symbol library "hog32-rescue".
+Symbol "+5V" mapped to symbol library "hog32-rescue".
+Info: Symbol library table mapping complete!
