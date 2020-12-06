@@ -73,50 +73,6 @@ F 3 "" H 7975 2925 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Mechanical:MountingHole H1
-U 1 1 5F9CF16D
-P 5150 2550
-F 0 "H1" H 5250 2596 50  0000 L CNN
-F 1 "MountingHole" H 5250 2505 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 2550 50  0001 C CNN
-F 3 "~" H 5150 2550 50  0001 C CNN
-	1    5150 2550
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H2
-U 1 1 5F9CF5FF
-P 5150 2775
-F 0 "H2" H 5250 2821 50  0000 L CNN
-F 1 "MountingHole" H 5250 2730 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 2775 50  0001 C CNN
-F 3 "~" H 5150 2775 50  0001 C CNN
-	1    5150 2775
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H3
-U 1 1 5F9CFBAC
-P 5150 3000
-F 0 "H3" H 5250 3046 50  0000 L CNN
-F 1 "MountingHole" H 5250 2955 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 3000 50  0001 C CNN
-F 3 "~" H 5150 3000 50  0001 C CNN
-	1    5150 3000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H4
-U 1 1 5F9D006D
-P 5150 3225
-F 0 "H4" H 5250 3271 50  0000 L CNN
-F 1 "MountingHole" H 5250 3180 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 3225 50  0001 C CNN
-F 3 "~" H 5150 3225 50  0001 C CNN
-	1    5150 3225
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector:Conn_01x07_Female J9
 U 1 1 5FB57B67
 P 5025 1575

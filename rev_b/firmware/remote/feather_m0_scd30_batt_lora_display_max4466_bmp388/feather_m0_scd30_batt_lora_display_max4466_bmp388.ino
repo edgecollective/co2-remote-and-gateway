@@ -1,8 +1,12 @@
 
 #include <SPI.h>
 #include <Wire.h>
-#include <Arduino.h>
-#include <hp_BH1750.h>  //  include the library
+#include <BMP388_DEV.h>                           // Include the BMP388_DEV.h library
+
+float bmp_temperature, bmp_pressure, bmp_altitude;            // Create the temperature, pressure and altitude variables
+BMP388_DEV bmp388; 
+
+
 #include <RTCZero.h> //https://github.com/arduino-libraries/RTCZero
 #include <RH_RF95.h> https://learn.adafruit.com/adafruit-rfm69hcw-and-rfm96-rfm95-rfm98-lora-packet-padio-breakouts/rfm9x-test
 #include <Adafruit_AM2315.h> //https://learn.adafruit.com/am2315-encased-i2c-temperature-humidity-sensor/arduino-code
@@ -50,20 +54,23 @@ unsigned int sample;
 
 float mic_level;
 
-hp_BH1750 BH1750;       //  create the sensor
-
 void setup() 
 {
 
     Serial.begin(9600);
-
-while (!Serial){
-  delay(1);
-}
-Serial.println("hello?");
+    
+    /*
+    while (!Serial) {
+      delay(10);
+    }
+    */
 
   Wire.begin();
 
+bmp388.begin();                                 // Default initialisation, place the BMP388 into SLEEP_MODE 
+  bmp388.setTimeStandby(TIME_STANDBY_1280MS);     // Set the standby time to 1.3 seconds
+  bmp388.startNormalConversion();                 // Start BMP388 continuous conversion in NORMAL_MODE  
+  
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
     Serial.println(F("SSD1306 allocation failed"));
@@ -79,9 +86,7 @@ if (airSensor.begin() == false)
   
   display.clearDisplay();
 
-    bool avail = BH1750.begin(BH1750_TO_GROUND);// init the sensor with address pin connetcted to ground
-
-
+  
   pinMode(LED, OUTPUT);
   
   pinMode(RFM95_RST, OUTPUT);
@@ -124,16 +129,22 @@ int16_t packetnum = 0;  // packet counter, we increment per xmission
 void loop()
 {
 
+while (!bmp388.getMeasurements(bmp_temperature, bmp_pressure, bmp_altitude))    // Check if the measurement is complete
+  {
+    Serial.println("getting BMP388 measurements ..");
+    delay(500);
+  }
+  
  if (airSensor.dataAvailable())
   {
 
-   // light level
- BH1750.start();   //starts a measurement
-  float lux=roundf(BH1750.getLux());  //  waits until a conversion finished
-  Serial.println(lux);  
-  delay(100);    
+    //do a mic sample
+    unsigned long startMillis= millis();  // Start of sample window
+   unsigned int peakToPeak = 0;   // peak-to-peak level
 
-// co2
+   unsigned int signalMax = 0;
+   unsigned int signalMin = 1024;
+
     int co2 = airSensor.getCO2();
     float temp = roundf(airSensor.getTemperature()* 100) / 100;
     float humid = roundf(airSensor.getHumidity()* 100) / 100;
@@ -150,14 +161,7 @@ void loop()
     Serial.println();
     Serial.println("collecting mic sample ...");
 
-       //mic level
-    unsigned long startMillis= millis();  // Start of sample window
-   unsigned int peakToPeak = 0;   // peak-to-peak level
-
-   unsigned int signalMax = 0;
-   unsigned int signalMin = 1024;
-
-
+    
    // collect data for 50 mS
    while (millis() - startMillis < sampleWindow)
    {
@@ -181,7 +185,7 @@ mic_level = roundf(volts* 100) / 100;
 
     Serial.print("Mic level was: ");
     Serial.print(volts);
-    Serial.println(" mic_level");
+    Serial.println(" Volts");
   
 
 DynamicJsonDocument doc(1024);
@@ -193,18 +197,22 @@ JsonObject fields = doc.createNestedObject("fields");
    fields["humid"]=humid;
 fields["co2"]=co2;
 fields["mic"]=mic_level;
-fields["lux"]=lux;
 
-set_text(temp, humid, co2,lux);
+float bmp_temp = roundf(bmp_temperature * 100) / 100;
+float bmp_press = roundf(bmp_pressure * 100) / 100;
+fields["bmp_temp"]=bmp_temp;
+fields["bmp_press"]=bmp_press;
 
-  char radiopacket[100];
+set_text(temp, humid, co2,bmp_press);
+
+  char radiopacket[200];
   serializeJson(doc, radiopacket);
   
   //itoa(packetnum++, radiopacket+13, 10);
-  Serial.print("Sending "); Serial.print(radiopacket); Serial.print(" ...");
+  Serial.println("Sending: "); Serial.println(radiopacket); Serial.println(" ...");
   delay(10);
   
-  rf95.send((uint8_t *)radiopacket, 100);
+  rf95.send((uint8_t *)radiopacket,200);
 
   delay(10);
   digitalWrite(LED, HIGH);
@@ -220,7 +228,7 @@ set_text(temp, humid, co2,lux);
 }
 
 
-void set_text(float temp, float humid, int co2, float lux) {
+void set_text(float temp, float humid, int co2, float bmp_press) {
   display.clearDisplay();
   display.setTextSize(2);      // Normal 1:1 pixel scale
   display.setTextColor(SSD1306_WHITE); // Draw white text
@@ -238,8 +246,8 @@ void set_text(float temp, float humid, int co2, float lux) {
   display.print("Microphone   ");
   display.print(mic_level);
   display.println(" V");
-  display.print("Lux         ");
-  display.print(lux);
-  display.print(" lux");
+  display.print("Pressure ");
+  display.print(bmp_press);
+  display.print(" hPa");
   display.display();
 }

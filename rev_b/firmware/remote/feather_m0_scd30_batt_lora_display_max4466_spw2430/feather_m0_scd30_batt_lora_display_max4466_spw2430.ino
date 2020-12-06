@@ -1,8 +1,7 @@
 
 #include <SPI.h>
 #include <Wire.h>
-#include <Arduino.h>
-#include <hp_BH1750.h>  //  include the library
+
 #include <RTCZero.h> //https://github.com/arduino-libraries/RTCZero
 #include <RH_RF95.h> https://learn.adafruit.com/adafruit-rfm69hcw-and-rfm96-rfm95-rfm98-lora-packet-padio-breakouts/rfm9x-test
 #include <Adafruit_AM2315.h> //https://learn.adafruit.com/am2315-encased-i2c-temperature-humidity-sensor/arduino-code
@@ -50,17 +49,8 @@ unsigned int sample;
 
 float mic_level;
 
-hp_BH1750 BH1750;       //  create the sensor
-
 void setup() 
 {
-
-    Serial.begin(9600);
-
-while (!Serial){
-  delay(1);
-}
-Serial.println("hello?");
 
   Wire.begin();
 
@@ -79,14 +69,13 @@ if (airSensor.begin() == false)
   
   display.clearDisplay();
 
-    bool avail = BH1750.begin(BH1750_TO_GROUND);// init the sensor with address pin connetcted to ground
-
-
+  
   pinMode(LED, OUTPUT);
   
   pinMode(RFM95_RST, OUTPUT);
   digitalWrite(RFM95_RST, HIGH);
 
+  Serial.begin(9600);
 
   delay(100);
 
@@ -127,13 +116,8 @@ void loop()
  if (airSensor.dataAvailable())
   {
 
-   // light level
- BH1750.start();   //starts a measurement
-  float lux=roundf(BH1750.getLux());  //  waits until a conversion finished
-  Serial.println(lux);  
-  delay(100);    
+    
 
-// co2
     int co2 = airSensor.getCO2();
     float temp = roundf(airSensor.getTemperature()* 100) / 100;
     float humid = roundf(airSensor.getHumidity()* 100) / 100;
@@ -148,41 +132,16 @@ void loop()
     Serial.println(humid, 1);
 
     Serial.println();
-    Serial.println("collecting mic sample ...");
+    Serial.println("collecting mic samples ...");
 
-       //mic level
-    unsigned long startMillis= millis();  // Start of sample window
-   unsigned int peakToPeak = 0;   // peak-to-peak level
-
-   unsigned int signalMax = 0;
-   unsigned int signalMin = 1024;
-
-
-   // collect data for 50 mS
-   while (millis() - startMillis < sampleWindow)
-   {
-      sample = analogRead(0);
-      if (sample < 1024)  // toss out spurious readings
-      {
-         if (sample > signalMax)
-         {
-            signalMax = sample;  // save just the max levels
-         }
-         else if (sample < signalMin)
-         {
-            signalMin = sample;  // save just the min levels
-         }
-      }
-   }
-   peakToPeak = signalMax - signalMin;  // max - min = peak-peak amplitude
-   double volts = (peakToPeak * 3.3) / 1024;  // convert to volts
-
-mic_level = roundf(volts* 100) / 100;
-
-    Serial.print("Mic level was: ");
-    Serial.print(volts);
-    Serial.println(" mic_level");
+   float mic0=mic_level(0);
+   float mic1=mic_level(1);
   
+   float measuredvbat = analogRead(VBATPIN);
+measuredvbat *= 2;    // we divided by 2, so multiply back
+measuredvbat *= 3.3;  // Multiply by 3.3V, our reference voltage
+measuredvbat /= 1024; // convert to voltage
+Serial.print("VBat: " ); Serial.println(measuredvbat);
 
 DynamicJsonDocument doc(1024);
 
@@ -191,11 +150,12 @@ JsonObject fields = doc.createNestedObject("fields");
 
    fields["temp"]=temp;
    fields["humid"]=humid;
+fields["batt"]=measuredvbat;
 fields["co2"]=co2;
-fields["mic"]=mic_level;
-fields["lux"]=lux;
+fields["mic0"]=mic0;
+fields["mic1"]=mic1;
 
-set_text(temp, humid, co2,lux);
+set_text(temp, humid, co2,measuredvbat);
 
   char radiopacket[100];
   serializeJson(doc, radiopacket);
@@ -220,7 +180,7 @@ set_text(temp, humid, co2,lux);
 }
 
 
-void set_text(float temp, float humid, int co2, float lux) {
+void set_text(float temp, float humid, int co2, float batt) {
   display.clearDisplay();
   display.setTextSize(2);      // Normal 1:1 pixel scale
   display.setTextColor(SSD1306_WHITE); // Draw white text
@@ -238,8 +198,39 @@ void set_text(float temp, float humid, int co2, float lux) {
   display.print("Microphone   ");
   display.print(mic_level);
   display.println(" V");
-  display.print("Lux         ");
-  display.print(lux);
-  display.print(" lux");
+  display.print("Battery      ");
+  display.print(batt);
+  display.print(" V");
   display.display();
+}
+float mic_level(int analogPin) {
+
+  //do a mic sample
+    unsigned long startMillis= millis();  // Start of sample window
+   unsigned int peakToPeak = 0;   // peak-to-peak level
+
+   unsigned int signalMax = 0;
+   unsigned int signalMin = 1024;
+   
+   // collect data for 50 mS
+   while (millis() - startMillis < sampleWindow)
+   {
+      sample = analogRead(0);
+      if (sample < 1024)  // toss out spurious readings
+      {
+         if (sample > signalMax)
+         {
+            signalMax = sample;  // save just the max levels
+         }
+         else if (sample < signalMin)
+         {
+            signalMin = sample;  // save just the min levels
+         }
+      }
+   }
+   peakToPeak = signalMax - signalMin;  // max - min = peak-peak amplitude
+   double volts = (peakToPeak * 3.3) / 1024;  // convert to volts
+
+float level = roundf(volts* 100) / 100;
+return (level);
 }
