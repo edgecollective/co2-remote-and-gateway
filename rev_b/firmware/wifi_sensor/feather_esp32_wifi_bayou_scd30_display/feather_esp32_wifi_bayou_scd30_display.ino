@@ -114,6 +114,7 @@ float bmp_press = roundf(bmp_pressure * 100) / 100;
 doc["deviceId"] =  sensorID;
 JsonObject fields = doc.createNestedObject("fields");
 fields["bmp_temp"]=bmp_temp;
+fields["bmp_press"]=bmp_press;
 
 
 
