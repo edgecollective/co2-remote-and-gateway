@@ -153,7 +153,7 @@ fields["co2"]=co2;
    // collect data for 50 mS
    while (millis() - startMillis < sampleWindow)
    {
-      sample = analogRead(0);
+      sample = analogRead(26);
       if (sample < 4096)  // toss out spurious readings
       {
          if (sample > signalMax)
