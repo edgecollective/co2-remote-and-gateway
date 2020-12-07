@@ -48,7 +48,7 @@ unsigned int sample;
 
 float mic_level;
 
-#define delayTime 3000
+#define delayTime 10000
 
 U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(/* clock=*/ 15, /* data=*/ 4, /* reset=*/ 16);
 
@@ -114,12 +114,12 @@ wifiMulti.addAP(SSID,WiFiPassword);
 
 void loop() {
 
-loopcount=loopcount+1;
+//loopcount=loopcount+1;
 
 Serial.print("loopcount=");
 Serial.println(loopcount);
 
-if(loopcount>4) {
+if(loopcount>5) {
 loopcount=0;
 Serial.print("force calibrate to:");
 Serial.println(force_concentration);
