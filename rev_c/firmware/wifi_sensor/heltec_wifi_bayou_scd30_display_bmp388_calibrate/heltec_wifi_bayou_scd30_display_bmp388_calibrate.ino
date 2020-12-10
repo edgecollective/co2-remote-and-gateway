@@ -114,13 +114,13 @@ wifiMulti.addAP(SSID,WiFiPassword);
 
 void loop() {
 
-//loopcount=loopcount+1;
+loopcount=loopcount+1;
 
 Serial.print("loopcount=");
 Serial.println(loopcount);
 
-if(loopcount>5) {
-loopcount=0;
+if(loopcount==5) {
+
 Serial.print("force calibrate to:");
 Serial.println(force_concentration);
 
