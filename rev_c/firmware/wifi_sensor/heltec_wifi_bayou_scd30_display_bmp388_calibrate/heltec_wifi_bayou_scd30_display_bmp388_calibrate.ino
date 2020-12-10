@@ -32,6 +32,8 @@ SCD30 airSensor;
 #define LED 13
 
 int loopcount = 0;
+int didForceCalibrate=0;
+
 
 unsigned long lastTime = 0;
 // Timer set to 10 minutes (600000)
@@ -119,12 +121,14 @@ loopcount=loopcount+1;
 Serial.print("loopcount=");
 Serial.println(loopcount);
 
-if(loopcount==5) {
+if(loopcount>=3) {
 
 Serial.print("force calibrate to:");
 Serial.println(force_concentration);
 
   airSensor.setForcedRecalibrationFactor(force_concentration);
+    didForceCalibrate=1;
+
 }
   /* if (button1.pressed) {
       Serial.printf("Button 1 has been pressed %u times\n", button1.numberKeyPresses);
@@ -175,6 +179,7 @@ if (airSensor.dataAvailable())
         fields["temp"]=temp;
    fields["humid"]=humid;
 fields["co2"]=co2;
+fields["forced"]=didForceCalibrate;
 
   /*
       //do a mic sample
@@ -235,8 +240,8 @@ u8x8.print("Humid: ");
 u8x8.print(humid);
 
 u8x8.setCursor(0,6);
-u8x8.print("Press: ");
-u8x8.print(bmp_press);
+u8x8.print("ForceCalib: ");
+u8x8.print(didForceCalibrate);
 
 
 
