@@ -54,6 +54,9 @@ float mic_level;
 
 int loopcount = 0;
 
+int didForceCalibrate=0;
+
+
 void setup() {
 
 
@@ -91,19 +94,20 @@ void setup() {
 wifiMulti.addAP(SSID,WiFiPassword);
 
 
-
 }
 
 void loop() {
 
 loopcount=loopcount+1;
 
-if(loopcount==5) {
+if(loopcount>=3) {
 
 Serial.print("force calibrate to:");
 Serial.println(force_concentration);
 
   airSensor.setForcedRecalibrationFactor(force_concentration);
+  didForceCalibrate=1;
+  
 }
 
   DynamicJsonDocument doc(1024);
@@ -135,6 +139,7 @@ if (airSensor.dataAvailable())
         fields["temp"]=temp;
    fields["humid"]=humid;
 fields["co2"]=co2;
+fields["forced"]=didForceCalibrate;
 
 /*
       //do a mic sample
@@ -246,8 +251,7 @@ void set_text(float temp, float humid, int co2) {
   display.print("Humidity    ");
   display.print(humid);
   display.println(" %");
-  //display.print("Microphone   ");
-  //display.print(mic_level);
-  //display.println(" V");
+  display.print("ForceCalib   ");
+  display.print(didForceCalibrate);
   display.display();
 }
