@@ -29,6 +29,10 @@ WiFiMulti wifiMulti;
 #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+#include <BMP388_DEV.h>                           // Include the BMP388_DEV.h library
+float bmp_temperature, bmp_pressure, bmp_altitude;            // Create the temperature, pressure and altitude variables
+BMP388_DEV bmp388; 
+
 #include "SparkFun_SCD30_Arduino_Library.h" //Click here to get the library: http://librarymanager/All#SparkFun_SCD30
 SCD30 airSensor;
 
@@ -53,6 +57,10 @@ float mic_level;
 void setup() {
 
     Wire.begin();
+
+bmp388.begin();                                 // Default initialisation, place the BMP388 into SLEEP_MODE 
+  bmp388.setTimeStandby(TIME_STANDBY_1280MS);     // Set the standby time to 1.3 seconds
+  bmp388.startNormalConversion();                 // Start BMP388 continuous conversion in NORMAL_MODE  
 
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
@@ -92,10 +100,22 @@ wifiMulti.addAP(SSID,WiFiPassword);
 void loop() {
 
 
+while (!bmp388.getMeasurements(bmp_temperature, bmp_pressure, bmp_altitude))    // Check if the measurement is complete
+  {
+    Serial.println("getting BMP388 measurements ..");
+    delay(500);
+  }
+
+float bmp_temp = roundf(bmp_temperature * 100) / 100;
+float bmp_press = roundf(bmp_pressure * 100) / 100;
+
   DynamicJsonDocument doc(1024);
 
 doc["deviceId"] =  sensorID;
 JsonObject fields = doc.createNestedObject("fields");
+fields["bmp_temp"]=bmp_temp;
+fields["bmp_press"]=bmp_press;
+
 
 
 if (airSensor.dataAvailable())
@@ -160,7 +180,7 @@ mic_level = roundf(volts* 100) / 100;
 fields["mic"]=mic_level;
 
 /// display parameters display
-set_text(temp, humid, co2);
+set_text(temp, humid, co2,bmp_press);
 
 String json;
 serializeJson(doc, json);
@@ -216,7 +236,7 @@ serializeJson(doc, Serial);
       
 } // end loop
 
-void set_text(float temp, float humid, int co2) {
+void set_text(float temp, float humid, int co2, float bmp_press) {
   display.clearDisplay();
   display.setTextSize(2);      // Normal 1:1 pixel scale
   display.setTextColor(SSD1306_WHITE); // Draw white text
@@ -234,5 +254,8 @@ void set_text(float temp, float humid, int co2) {
   display.print("Microphone   ");
   display.print(mic_level);
   display.println(" V");
+  display.print("Pressure ");
+  display.print(bmp_press);
+  display.print(" hPa");
   display.display();
 }

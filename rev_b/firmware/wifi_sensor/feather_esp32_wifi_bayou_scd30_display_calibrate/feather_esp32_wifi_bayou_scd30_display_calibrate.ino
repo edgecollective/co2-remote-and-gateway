@@ -50,7 +50,9 @@ unsigned int sample;
 
 float mic_level;
 
-#define delayTime 10000
+#define delayTime 30000
+#define loopforce 4  // the loop on which to do the forced calibration
+
 
 int loopcount = 0;
 
@@ -100,7 +102,7 @@ void loop() {
 
 loopcount=loopcount+1;
 
-if(loopcount>=3) {
+if(loopcount==loopforce) {
 
 Serial.print("force calibrate to:");
 Serial.println(force_concentration);
