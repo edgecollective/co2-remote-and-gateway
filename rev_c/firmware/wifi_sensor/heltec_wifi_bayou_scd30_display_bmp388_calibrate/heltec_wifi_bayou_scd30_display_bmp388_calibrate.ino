@@ -39,7 +39,7 @@ unsigned long lastTime = 0;
 // Timer set to 10 minutes (600000)
 //unsigned long timerDelay = 600000;
 // Set timer to 90 seconds (5000)
-unsigned long timerDelay = 90000;
+unsigned long timerDelay = 60000;
 
 #define sensorID 15
 #define force_concentration 410
@@ -50,7 +50,9 @@ unsigned int sample;
 
 float mic_level;
 
-#define delayTime 10000
+#define delayTime 30000
+#define loopforce 4  // the loop on which to do the forced calibration
+
 
 U8X8_SSD1306_128X64_NONAME_SW_I2C u8x8(/* clock=*/ 15, /* data=*/ 4, /* reset=*/ 16);
 
@@ -121,7 +123,7 @@ loopcount=loopcount+1;
 Serial.print("loopcount=");
 Serial.println(loopcount);
 
-if(loopcount>=3) {
+if(loopcount==loopforce) {
 
 Serial.print("force calibrate to:");
 Serial.println(force_concentration);
