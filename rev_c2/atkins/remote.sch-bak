@@ -90,17 +90,6 @@ SDA
 Wire Wire Line
 	6075 2075 6075 1675
 $Comp
-L Mechanical:MountingHole H1
-U 1 1 5F9CF16D
-P 5150 2550
-F 0 "H1" H 5250 2596 50  0000 L CNN
-F 1 "MountingHole" H 5250 2505 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 5150 2550 50  0001 C CNN
-F 3 "~" H 5150 2550 50  0001 C CNN
-	1    5150 2550
-	1    0    0    -1  
-$EndComp
-$Comp
 L Mechanical:MountingHole H2
 U 1 1 5F9CF5FF
 P 5150 2775
@@ -477,5 +466,40 @@ F 2 "" H 7350 1975 50  0001 C CNN
 F 3 "" H 7350 1975 50  0001 C CNN
 	1    7350 1975
 	0    1    1    0   
+$EndComp
+$Comp
+L Device:R RS2
+U 1 1 5FDD33D4
+P 5400 4400
+F 0 "RS2" H 5470 4446 50  0000 L CNN
+F 1 "10K" H 5470 4355 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5330 4400 50  0001 C CNN
+F 3 "~" H 5400 4400 50  0001 C CNN
+	1    5400 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0108
+U 1 1 5FDD364E
+P 5400 4550
+F 0 "#PWR0108" H 5400 4300 50  0001 C CNN
+F 1 "GND" H 5405 4377 50  0000 C CNN
+F 2 "" H 5400 4550 50  0001 C CNN
+F 3 "" H 5400 4550 50  0001 C CNN
+	1    5400 4550
+	1    0    0    -1  
+$EndComp
+Text GLabel 5400 3950 0    50   Input ~ 0
+38_A2
+$Comp
+L Device:LED D1
+U 1 1 5FDEF6AE
+P 5400 4100
+F 0 "D1" V 5439 3982 50  0000 R CNN
+F 1 "LED" V 5348 3982 50  0000 R CNN
+F 2 "LED_THT:LED_D5.0mm" H 5400 4100 50  0001 C CNN
+F 3 "~" H 5400 4100 50  0001 C CNN
+	1    5400 4100
+	0    -1   -1   0   
 $EndComp
 $EndSCHEMATC
