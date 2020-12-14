@@ -370,7 +370,7 @@ F 3 "" H 1375 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 1375 1350 0    50   Input ~ 0
-38_A2
+39_A3
 $Comp
 L Device:LED D1
 U 1 1 5FDEF6AE
@@ -414,30 +414,30 @@ F 3 "~" H 5725 4400 50  0001 C CNN
 	1    5725 4400
 	1    0    0    -1  
 $EndComp
-Text GLabel 5525 4400 0    50   Input ~ 0
+Text GLabel 5525 4600 0    50   Input ~ 0
 SCL
 Text GLabel 5525 4500 0    50   Input ~ 0
 SDA
 $Comp
 L power:GND #PWR0109
 U 1 1 5FE6B0EA
-P 5525 4600
-F 0 "#PWR0109" H 5525 4350 50  0001 C CNN
-F 1 "GND" H 5530 4427 50  0000 C CNN
-F 2 "" H 5525 4600 50  0001 C CNN
-F 3 "" H 5525 4600 50  0001 C CNN
-	1    5525 4600
+P 5150 4300
+F 0 "#PWR0109" H 5150 4050 50  0001 C CNN
+F 1 "GND" H 5155 4127 50  0000 C CNN
+F 2 "" H 5150 4300 50  0001 C CNN
+F 3 "" H 5150 4300 50  0001 C CNN
+	1    5150 4300
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+3V3 #PWR0110
 U 1 1 5FE6B673
-P 5525 4300
-F 0 "#PWR0110" H 5525 4150 50  0001 C CNN
-F 1 "+3V3" V 5540 4428 50  0000 L CNN
-F 2 "" H 5525 4300 50  0001 C CNN
-F 3 "" H 5525 4300 50  0001 C CNN
-	1    5525 4300
+P 5400 4225
+F 0 "#PWR0110" H 5400 4075 50  0001 C CNN
+F 1 "+3V3" V 5415 4353 50  0000 L CNN
+F 2 "" H 5400 4225 50  0001 C CNN
+F 3 "" H 5400 4225 50  0001 C CNN
+	1    5400 4225
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -602,6 +602,34 @@ F 1 "SW_Push" H 4200 5344 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 4200 5350 50  0001 C CNN
 F 3 "~" H 4200 5350 50  0001 C CNN
 	1    4200 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5525 4400 5400 4400
+Wire Wire Line
+	5400 4400 5400 4225
+Wire Wire Line
+	5525 4300 5150 4300
+$Comp
+L Mechanical:MountingHole H5
+U 1 1 5FD710C6
+P 1375 3950
+F 0 "H5" H 1475 3996 50  0000 L CNN
+F 1 "MountingHole" H 1475 3905 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 1375 3950 50  0001 C CNN
+F 3 "~" H 1375 3950 50  0001 C CNN
+	1    1375 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H6
+U 1 1 5FD797A9
+P 1375 4175
+F 0 "H6" H 1475 4221 50  0000 L CNN
+F 1 "MountingHole" H 1475 4130 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2" H 1375 4175 50  0001 C CNN
+F 3 "~" H 1375 4175 50  0001 C CNN
+	1    1375 4175
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

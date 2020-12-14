@@ -370,7 +370,7 @@ F 3 "" H 1375 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 1375 1350 0    50   Input ~ 0
-38_A2
+39_A3
 $Comp
 L Device:LED D1
 U 1 1 5FDEF6AE
