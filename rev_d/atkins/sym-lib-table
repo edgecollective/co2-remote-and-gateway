@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name Adafruit_BMP390-eagle-import)(type Legacy)(uri ${KIPRJMOD}/symbols/Adafruit_BMP390-eagle-import.lib)(options "")(descr ""))
+  (lib (name Adafruit_Feather_M0_RFMxx-eagle-import)(type Legacy)(uri ${KIPRJMOD}/symbols/Adafruit_Feather_M0_RFMxx-eagle-import.lib)(options "")(descr ""))
+  (lib (name Adafruit_HUZZAH32_ESP32_Feather-eagle-import)(type Legacy)(uri ${KIPRJMOD}/symbols/Adafruit_HUZZAH32_ESP32_Feather-eagle-import.lib)(options "")(descr ""))
+)
