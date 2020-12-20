@@ -1433,4 +1433,39 @@ Wire Wire Line
 	13425 2625 13425 2675
 Wire Wire Line
 	13425 2675 13275 2675
+$Comp
+L Connector:Micro_SD_Card J3
+U 1 1 60214F6A
+P 5925 6025
+F 0 "J3" H 5875 6742 50  0000 C CNN
+F 1 "Micro_SD_Card" H 5875 6651 50  0000 C CNN
+F 2 "atkins:DM3D-SF" H 7075 6325 50  0001 C CNN
+F 3 "http://katalog.we-online.de/em/datasheet/693072010801.pdf" H 5925 6025 50  0001 C CNN
+	1    5925 6025
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x04_Male J8
+U 1 1 6023E644
+P 4100 1475
+F 0 "J8" H 4208 1756 50  0000 C CNN
+F 1 "Conn_01x04_Male" H 4208 1665 50  0000 C CNN
+F 2 "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal" H 4100 1475 50  0001 C CNN
+F 3 "~" H 4100 1475 50  0001 C CNN
+	1    4100 1475
+	1    0    0    -1  
+$EndComp
+Text Notes 10275 3400 0    79   ~ 0
+breakout
+$Comp
+L Connector:Conn_01x07_Female J5
+U 1 1 6026AA43
+P 10675 3825
+F 0 "J5" H 10703 3851 50  0000 L CNN
+F 1 "Conn_01x07_Female" H 10703 3760 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x07_P2.54mm_Vertical" H 10675 3825 50  0001 C CNN
+F 3 "~" H 10675 3825 50  0001 C CNN
+	1    10675 3825
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
