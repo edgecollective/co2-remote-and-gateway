@@ -1514,11 +1514,11 @@ Text GLabel 13850 3000 2    50   Input ~ 0
 4
 Text GLabel 13300 3700 3    50   Input ~ 0
 A8_15
-Text GLabel 13300 6000 0    50   Input ~ 0
+Text GLabel 14950 6375 0    50   Input ~ 0
 4
-Text GLabel 13300 5900 0    50   Input ~ 0
+Text GLabel 14950 6275 0    50   Input ~ 0
 2
-Text GLabel 13300 5800 0    50   Input ~ 0
+Text GLabel 14950 6175 0    50   Input ~ 0
 0
 Text GLabel 10150 1775 0    50   Input ~ 0
 A8_15
@@ -1564,18 +1564,7 @@ Text GLabel 12000 3250 0    50   Input ~ 0
 A11_12
 Text GLabel 14400 3900 0    50   Input ~ 0
 A11_12
-$Comp
-L Connector:Conn_01x05_Female J5
-U 1 1 600DC2A3
-P 13500 5900
-F 0 "J5" H 13528 5926 50  0000 L CNN
-F 1 "Conn_01x05_Female" H 13528 5835 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 13500 5900 50  0001 C CNN
-F 3 "~" H 13500 5900 50  0001 C CNN
-	1    13500 5900
-	1    0    0    -1  
-$EndComp
-Text GLabel 13300 6100 0    50   Input ~ 0
+Text GLabel 14950 6475 0    50   Input ~ 0
 VBAT
 Text GLabel 2850 3975 2    50   Input ~ 0
 SCL
@@ -1744,17 +1733,6 @@ F 3 "" H 9075 9750 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	13300 5375 12875 5375
-$Comp
-L Connector:Conn_01x05_Female J1
-U 1 1 603068CE
-P 13500 5175
-F 0 "J1" H 13528 5201 50  0000 L CNN
-F 1 "Conn_01x05_Female" H 13528 5110 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 13500 5175 50  0001 C CNN
-F 3 "~" H 13500 5175 50  0001 C CNN
-	1    13500 5175
-	1    0    0    -1  
-$EndComp
 Text Notes 2650 1275 0    79   ~ 0
 battery charging
 Text Notes 7975 7700 0    79   ~ 0
@@ -1998,4 +1976,30 @@ F 3 "~" H 10300 8125 50  0001 C CNN
 	1    10300 8125
 	1    0    0    -1  
 $EndComp
+$Comp
+L Connector:Conn_01x04_Female J11
+U 1 1 5FF2300C
+P 15150 6275
+F 0 "J11" H 15178 6251 50  0000 L CNN
+F 1 "Conn_01x04_Female" H 15178 6160 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 15150 6275 50  0001 C CNN
+F 3 "~" H 15150 6275 50  0001 C CNN
+	1    15150 6275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x07_Female J1
+U 1 1 5FF3A551
+P 13500 5275
+F 0 "J1" H 13528 5301 50  0000 L CNN
+F 1 "Conn_01x07_Female" H 13528 5210 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x07_P2.54mm_Vertical" H 13500 5275 50  0001 C CNN
+F 3 "~" H 13500 5275 50  0001 C CNN
+	1    13500 5275
+	1    0    0    -1  
+$EndComp
+Text GLabel 13300 5475 0    50   Input ~ 0
+SDA
+Text GLabel 13300 5575 0    50   Input ~ 0
+SCL
 $EndSCHEMATC
