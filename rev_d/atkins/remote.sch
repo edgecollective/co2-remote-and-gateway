@@ -1562,7 +1562,7 @@ F 3 "" H 12875 5375 50  0001 C CNN
 $EndComp
 Text GLabel 12000 3250 0    50   Input ~ 0
 A11_12
-Text GLabel 13300 5700 0    50   Input ~ 0
+Text GLabel 14400 3900 0    50   Input ~ 0
 A11_12
 $Comp
 L Connector:Conn_01x05_Female J5
@@ -1734,12 +1734,12 @@ Wire Wire Line
 $Comp
 L power:GND #PWR0163
 U 1 1 602E300F
-P 9075 9450
-F 0 "#PWR0163" H 9075 9200 50  0001 C CNN
-F 1 "GND" H 9080 9277 50  0000 C CNN
-F 2 "" H 9075 9450 50  0001 C CNN
-F 3 "" H 9075 9450 50  0001 C CNN
-	1    9075 9450
+P 9075 9750
+F 0 "#PWR0163" H 9075 9500 50  0001 C CNN
+F 1 "GND" H 9080 9577 50  0000 C CNN
+F 2 "" H 9075 9750 50  0001 C CNN
+F 3 "" H 9075 9750 50  0001 C CNN
+	1    9075 9750
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1908,6 +1908,94 @@ F 1 "+3V3" H 6790 3648 50  0000 C CNN
 F 2 "" H 6775 3475 50  0001 C CNN
 F 3 "" H 6775 3475 50  0001 C CNN
 	1    6775 3475
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C15
+U 1 1 6052EE6E
+P 9075 9600
+F 0 "C15" H 9190 9646 50  0000 L CNN
+F 1 "C" H 9190 9555 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 9113 9450 50  0001 C CNN
+F 3 "~" H 9075 9600 50  0001 C CNN
+	1    9075 9600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 5FEB5917
+P 14400 4050
+F 0 "D3" V 14439 3932 50  0000 R CNN
+F 1 "LED" V 14348 3932 50  0000 R CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 14400 4050 50  0001 C CNN
+F 3 "~" H 14400 4050 50  0001 C CNN
+	1    14400 4050
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R18
+U 1 1 5FEC7CA9
+P 14400 4350
+F 0 "R18" V 14193 4350 50  0000 C CNN
+F 1 "500 Ohm" V 14284 4350 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 14330 4350 50  0001 C CNN
+F 3 "~" H 14400 4350 50  0001 C CNN
+	1    14400 4350
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0164
+U 1 1 5FEC81AA
+P 14400 4500
+F 0 "#PWR0164" H 14400 4250 50  0001 C CNN
+F 1 "GND" H 14405 4327 50  0000 C CNN
+F 2 "" H 14400 4500 50  0001 C CNN
+F 3 "" H 14400 4500 50  0001 C CNN
+	1    14400 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5FEF5700
+P 10300 7275
+F 0 "H1" H 10400 7321 50  0000 L CNN
+F 1 "MountingHole" H 10400 7230 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm" H 10300 7275 50  0001 C CNN
+F 3 "~" H 10300 7275 50  0001 C CNN
+	1    10300 7275
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5FEF8361
+P 10300 7575
+F 0 "H2" H 10400 7621 50  0000 L CNN
+F 1 "MountingHole" H 10400 7530 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm" H 10300 7575 50  0001 C CNN
+F 3 "~" H 10300 7575 50  0001 C CNN
+	1    10300 7575
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5FEF8619
+P 10300 7850
+F 0 "H3" H 10400 7896 50  0000 L CNN
+F 1 "MountingHole" H 10400 7805 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm" H 10300 7850 50  0001 C CNN
+F 3 "~" H 10300 7850 50  0001 C CNN
+	1    10300 7850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 5FEF88FB
+P 10300 8125
+F 0 "H4" H 10400 8171 50  0000 L CNN
+F 1 "MountingHole" H 10400 8080 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.5mm" H 10300 8125 50  0001 C CNN
+F 3 "~" H 10300 8125 50  0001 C CNN
+	1    10300 8125
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
