@@ -1982,18 +1982,18 @@ U 1 1 5FF2300C
 P 15150 6275
 F 0 "J11" H 15178 6251 50  0000 L CNN
 F 1 "Conn_01x04_Female" H 15178 6160 50  0000 L CNN
-F 2 "" H 15150 6275 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 15150 6275 50  0001 C CNN
 F 3 "~" H 15150 6275 50  0001 C CNN
 	1    15150 6275
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x07_Female J?
+L Connector:Conn_01x07_Female J1
 U 1 1 5FF3A551
 P 13500 5275
-F 0 "J?" H 13528 5301 50  0000 L CNN
+F 0 "J1" H 13528 5301 50  0000 L CNN
 F 1 "Conn_01x07_Female" H 13528 5210 50  0000 L CNN
-F 2 "" H 13500 5275 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x07_P2.54mm_Vertical" H 13500 5275 50  0001 C CNN
 F 3 "~" H 13500 5275 50  0001 C CNN
 	1    13500 5275
 	1    0    0    -1  
