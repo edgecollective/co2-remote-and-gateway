@@ -3,7 +3,7 @@
 //pcb dimensions (mm)
 pcb_l = 92; // (x dim, edges of PCB)
 pcb_w = 69.5; // (y dim, edges of PCB)
-pcb_h = 30; // (z dim, from bottom of PCB to top with placed components / headers / etc)
+pcb_h = 30; // (z dim, from bottom of PCB to top with placed components / headers / etc)r
 
 buffer = 10; // buffer zone around edges of pcb
 wall_thickness = -1; // not sure what's up with this
@@ -102,12 +102,14 @@ enclosureHoles();
 }
 }
 
+
 // RENDER FULL
 //concat();
 
 /* To actually print, we’ll need to render it in two separate halves which we will attach later. So, comment out the above concat() command and instead run the below code to render the top only */
 
-// RENDER COVER
+
+// RENDER COVER (by subtracting bottom)
 difference() {
 concat();
 translate([0,0,-cover_width])
@@ -115,7 +117,8 @@ cube([l*1.5,w*1.5,h], center=true);
 }
 
 
-// RENDER BOTTOM
+
+// RENDER BOTTOM (by subtracting top)
 difference() {
 concat();
 translate([0,0,h-cover_width])
