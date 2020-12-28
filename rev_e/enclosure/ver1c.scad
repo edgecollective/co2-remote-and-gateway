@@ -6,17 +6,22 @@ pcb_w = 69.5; // (y dim, edges of PCB)
 pcb_h = 30; // (z dim, from bottom of PCB to top with placed components / headers / etc)r
 
 buffer = 10; // buffer zone around edges of pcb
-wall_thickness = -1; // not sure what's up with this
+wall_thickness = 2;
 
-// box size overall
-l = pcb_l+buffer; // x dim
-w = pcb_w+buffer; // y dim
-h = pcb_h+buffer; // z dim
+// inner cavity size overall
+cavity_l = pcb_l+buffer; // x dim
+cavity_w = pcb_w+buffer; // y dim
+cavity_h = pcb_h+buffer; // z dim
 
-wall=1; // wall thickness
+// outer dimensions
+minkowski_radius = cavity_h/10;
+outer_l = cavity_l + wall_thickness/2;
+outer_w = cavity_w + wall_thickness/2;
+outer_h = cavity_h + wall_thickness/2;
 
-//top cover width
-cover_width=10; 
+
+//top cover height
+cover_height = 10 + wall_thickness; 
 
 // button 1
 button1_radius = 3.5; //mm
@@ -55,13 +60,17 @@ minkowski()
 difference()
 {
 translate([0,0,0])
-cube([l,w,h], center=true);
+//make the box larger than the cavity by wall thickness, correcting for minkowski radius  
+cube([outer_l - minkowski_radius,
+      outer_w - minkowski_radius,
+      outer_h - minkowski_radius], 
+      center=true);
 };
 
-sphere(h/10);
+sphere(minkowski_radius);
 };
 
-cube([l-wall_thickness,w-wall_thickness,h-wall_thickness], center=true);
+cube([cavity_l,cavity_w,cavity_h], center=true);
 }
 }
 
@@ -70,26 +79,26 @@ module enclosureHoles() {
 union() {
 
 // USB
-translate([-l/2-10,usb_y-usb_dy/2,usb_z-usb_dz/2])
-cube([10*wall, usb_dy, usb_dz]);
+translate([-cavity_l/2-10,usb_y-usb_dy/2,usb_z-usb_dz/2])
+cube([10*wall_thickness, usb_dy, usb_dz]);
     
 // button #1
-translate([-l/2,button1_y,button1_z])
+translate([-cavity_l/2,button1_y,button1_z])
 rotate([0,-90,0])
-cylinder(r=button1_radius, h=10*wall);
+cylinder(r=button1_radius, h=10*wall_thickness);
 
 // button #2
-translate([-l/2,button2_y,button2_z])
+translate([-cavity_l/2,button2_y,button2_z])
 rotate([0,-90,0])
-cylinder(r=button2_radius, h=10*wall);
+cylinder(r=button2_radius, h=10*wall_thickness);
     
 // Screen
-translate([screen_x-screen_dx/2,screen_y-screen_dy/2,h/2])
-cube([screen_dx, screen_dy,10*wall]);
+translate([screen_x-screen_dx/2,screen_y-screen_dy/2,cavity_h/2])
+cube([screen_dx, screen_dy,10*wall_thickness]);
 
 // mic
-translate([mic_x,mic_y,h/2-10*wall/2])
-cylinder(r=mic_radius, h=20*wall);
+translate([mic_x,mic_y,cavity_h/2-10*wall_thickness/2])
+cylinder(r=mic_radius, h=20*wall_thickness);
 
 }
 }
@@ -112,15 +121,15 @@ enclosureHoles();
 // RENDER COVER (by subtracting bottom)
 difference() {
 concat();
-translate([0,0,-cover_width])
-cube([l*1.5,w*1.5,h], center=true);
+translate([0,0,-cover_height])
+cube([outer_l*1.5,outer_w*1.5,outer_h], center=true);
 }
 
 
 
-// RENDER BOTTOM (by subtracting top)
-difference() {
-concat();
-translate([0,0,h-cover_width])
-cube([l*1.5,w*1.5,h], center=true);
-}
+//// RENDER BOTTOM (by subtracting top)
+//difference() {
+//concat();
+//translate([0,0,outer_h-cover_width])
+//cube([outer_l*1.5,outer_w*1.5,outer_h], center=true);
+//}

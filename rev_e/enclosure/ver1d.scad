@@ -5,23 +5,25 @@ pcb_l = 92; // (x dim, edges of PCB)
 pcb_w = 69.5; // (y dim, edges of PCB)
 pcb_h = 30; // (z dim, from bottom of PCB to top with placed components / headers / etc)r
 
-buffer = 10; // buffer zone around edges of pcb
-wall_thickness = 2;
+wall_thickness = 2.5;
+buffer = 10;
 
-// inner cavity size overall
-cavity_l = pcb_l+buffer; // x dim
-cavity_w = pcb_w+buffer; // y dim
-cavity_h = pcb_h+buffer; // z dim
+// inner cubic cavity size overall, not including minkowski radius
+cavity_l = pcb_l; // x dim
+cavity_w = pcb_w; // y dim
+cavity_h = pcb_h; // z dim
 
 // outer dimensions
-minkowski_radius = cavity_h/10;
-outer_l = cavity_l + wall_thickness/2;
-outer_w = cavity_w + wall_thickness/2;
-outer_h = cavity_h + wall_thickness/2;
+minkowski_radius = buffer;
+outer_l = cavity_l + 2*wall_thickness + minkowski_radius;
+outer_w = cavity_w + 2*wall_thickness + minkowski_radius;
+outer_h = cavity_h + 2*wall_thickness + minkowski_radius;
 
+//base specific dimensions
+base_height = pcb_h + 10;
 
 //top cover height
-cover_height = 10 + wall_thickness;
+cover_height = 10;
 lip_height   = wall_thickness;
 lip_width    = wall_thickness/2;
 
@@ -53,29 +55,30 @@ screen_dx = 35; //length of screen (x dim)
 screen_dy = 20; //
 
 module enclosure() {
+    //shift the origin to the outer bounding box bottom left corner
+    translate([outer_l/2 + minkowski_radius/2,
+               outer_w/2 + minkowski_radius/2,
+               outer_h/2 + minkowski_radius/2])
+    difference()
+    {
+        //this is the outer solid
+        minkowski()
+        {
+            cube([outer_l - minkowski_radius,
+                  outer_w - minkowski_radius,
+                  outer_h - minkowski_radius],center=true);
+            sphere(minkowski_radius);
+        };
+        //this is the inner cavity
+        minkowski()
+        {
+            cube([cavity_l,
+                  cavity_w,
+                  cavity_h],center=true);
+            sphere(minkowski_radius);
+        };
 
-difference() {
-
-minkowski()
-{
-
-difference()
-{
-translate([0,0,0])
-//make the box larger than the cavity by wall thickness, correcting for minkowski radius  
-cube([outer_l - minkowski_radius,
-      outer_w - minkowski_radius,
-      outer_h - minkowski_radius], 
-      center=true);
-};
-
-sphere(minkowski_radius);
-};
-
-//carve the cavity
-cube([cavity_l,cavity_w,cavity_h], center=true);
-
-}
+    }
 }
 
 module enclosureHoles() {
@@ -123,21 +126,21 @@ enclosureHoles();
 
 
 // RENDER COVER (by subtracting bottom)
-difference() {
-concat();
-translate([0,0,-cover_height])
-cube([outer_l*1.5,outer_w*1.5,outer_h], center=true);
-//carve the lip out of the rim
- 
-}
+//difference() {
+//concat();
+//translate([0,0,-cover_height])
+//cube([cavity_l*1.5,cavity_w*1.5,cavity_h], center=true);
+////carve the lip out of the rim
+// 
+//}
 
-translate([0,0,cover_height-lip_height])
-cube([cavity_l+lip_width/2,cavity_w+lip_width/2,lip_height], center=true);   
+//translate([0,0,cover_height-lip_height-wall_thickness/2])
+//cube([cavity_l+lip_width/2,cavity_w+lip_width/2,lip_height]);   
 
 
 //// RENDER BOTTOM (by subtracting top)
-//difference() {
-//concat();
-//translate([0,0,outer_h-cover_width])
-//cube([outer_l*1.5,outer_w*1.5,outer_h], center=true);
-//}
+difference() {
+concat();
+translate([-outer_l/2,-outer_w/2,base_height])
+cube([outer_l*2,outer_w*2,outer_h]);
+}
