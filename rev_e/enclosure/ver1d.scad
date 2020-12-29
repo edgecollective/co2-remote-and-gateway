@@ -5,7 +5,7 @@ pcb_l = 91.948; // (x dim, edges of PCB)
 pcb_w = 69.342; // (y dim, edges of PCB)
 pcb_h = 30; // (z dim, from bottom of PCB to top with placed components / headers / etc)r
 
-wall_thickness = 2.5;
+wall_thickness = 2;
 buffer = 10;
 minkowski_radius = buffer; //special parameter for box rounding
 
@@ -135,9 +135,18 @@ module enclosureBottom() {
                        t=wall_thickness/2,
                        r=minkowski_radius
                        );
-        //inner shell, fcylinderorms recessed flange for lid
-        minkowski_dish(l=outer_l-wall_thickness,
-                       w=outer_w-wall_thickness,
+        //middle channel shell, forms channel for RTV gasket seal
+        inset = 0.1; //make sure layers are merged
+        channel_depth = wall_thickness;
+        minkowski_dish(l=outer_l-wall_thickness + inset,
+                       w=outer_w-wall_thickness + inset,
+                       h=outer_h-wall_thickness - channel_depth,
+                       t=wall_thickness/2,
+                       r=minkowski_radius
+                       );
+        //inner shell, forms flange for lid
+        minkowski_dish(l=outer_l-2*wall_thickness + inset,
+                       w=outer_w-2*wall_thickness + inset,
                        h=outer_h-wall_thickness,
                        t=wall_thickness/2,
                        r=minkowski_radius
@@ -146,8 +155,8 @@ module enclosureBottom() {
         intersection(){
             t = 3*wall_thickness;
             translate([0,0,t])
-            minkowski_dish(l=outer_l-wall_thickness,
-                       w=outer_w-wall_thickness,
+            minkowski_dish(l=outer_l-2*wall_thickness + inset,
+                       w=outer_w-2*wall_thickness + inset,
                        h=outer_h+t,
                        t=t,
                        r=minkowski_radius
