@@ -39,8 +39,8 @@ ORIGIN_TO_PCB_VECTOR = [minkowski_radius+wall_thickness,
                         pcb_vertical_location];
 
 //screw holes
-M2p5_PASSTHROUGH_DRILL = 2.7; //mm
-M2p5_TAP_DRILL = 2.05; //mm
+M2p5_PASSTHROUGH_DRILL = 2.7/2; // radius mm
+M2p5_TAP_DRILL = 2.05/2;        // radius mm
 
 // button 1
 button1_radius = 3.5; //mm
@@ -76,7 +76,7 @@ lora_z=15;
 
 
 //pcb mounting holes
-mounting_hole_radius=2.7/2;
+mounting_hole_radius=M2p5_PASSTHROUGH_DRILL;
 
 //pcb mounting hole 1
 h1_x=3.310;
@@ -237,17 +237,17 @@ module enclosureHoles() {
         rotate([-90,0,0])
         cylinder(r=lora_hole_radius, h=lora_l);
         //pcb hole 1
-        #translate([h1_x,h1_y,0])
-        cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
+        #translate([h1_x,h1_y,-outer_h/2])
+        cylinder(r=mounting_hole_radius, h=outer_h/2);
         //pcb hole 2
-        #translate([h2_x,h2_y,0])
-        cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
+        #translate([h2_x,h2_y,-outer_h/2])
+        cylinder(r=mounting_hole_radius, h=outer_h/2);
         //pcb hole 3
-        #translate([h3_x,h3_y,0])
-        cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
+        #translate([h3_x,h3_y,-outer_h/2])
+        cylinder(r=mounting_hole_radius, h=outer_h/2);
         //pcb hole 4
-        #translate([h4_x,h4_y,0])
-        cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
+        #translate([h4_x,h4_y,-outer_h/2])
+        cylinder(r=mounting_hole_radius, h=outer_h/2);
         //screen 
         #translate([screen_x,screen_y,0])
         cube([screen_dx,screen_dy,20],center=false);  
@@ -261,8 +261,8 @@ module enclosureHoles() {
 module enclosure() {
     difference() {
         union(){
-            //enclosureBottom();
-            enclosureLid();
+            enclosureBottom();
+            //enclosureLid();
         }
         enclosureHoles();
 
