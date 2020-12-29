@@ -1,5 +1,5 @@
-cavity_length=92;
-cavity_width=70;
+cavity_length=100;
+cavity_width=75;
 cavity_height=25;
 
 bend_band=5;
@@ -9,7 +9,7 @@ smidge=30;
 difference() {
 union() {
     //1
-translate([-cavity_height/2,0,0])
+translate([-cavity_height,0,0])
 square([cavity_height,cavity_width],false);
 
 //2
@@ -84,12 +84,12 @@ translate([slice,-cavity_height,0])
 square([cavity_length-2*slice,cavity_height],false);
 
 //1A
-translate([-cavity_height/2+slice,cavity_width,0])
-square([cavity_height/2-2*slice,cavity_height/2],false);
+translate([-cavity_height+slice,cavity_width,0])
+square([cavity_height-2*slice,cavity_height],false);
 
 //1B
-translate([-cavity_height/2+slice,-cavity_height/2,0])
-square([cavity_height/2-2*slice,cavity_height/2],false);
+translate([-cavity_height+slice,-cavity_height,0])
+square([cavity_height-2*slice,cavity_height],false);
 
 }
 
