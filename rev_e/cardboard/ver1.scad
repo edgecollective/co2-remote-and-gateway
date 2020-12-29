@@ -186,6 +186,7 @@ translate([cavity_length+cavity_height-button2_z,button2_y,0])
 circle(r=button1_radius);
 
 //usb 
+
 usb_y = 44.662; //y position of usb, measured from pcb bottom
 usb_dy = 10; // width of usb opening
 usb_z = 15; //z position of usb, measured from pcb bottom
