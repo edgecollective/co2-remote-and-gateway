@@ -69,17 +69,17 @@ square([cavity_height-2*slice,cavity_height],false);
 
 //8A
 translate([cavity_length+cavity_height+smidge,cavity_width+cavity_height+bend_band+bend_band+cavity_height,0])
-square([cavity_length-2*smidge,bend_band],false);
+square([cavity_length-2*smidge,bend_band*2],false);
 
 //9A
-translate([cavity_length+cavity_height+smidge,-(cavity_height+bend_band+bend_band+cavity_height+bend_band),0])
-square([cavity_length-2*smidge,bend_band],false);
+translate([cavity_length+cavity_height+smidge,-(cavity_height+bend_band+bend_band+cavity_height+bend_band*2),0])
+square([cavity_length-2*smidge,bend_band*2],false);
 
 
 //2A
 difference(){
 translate([slice,cavity_width,0])
-square([cavity_length-2*slice,cavity_height],false);
+square([cavity_length-2*slice,cavity_height/2],false);
 
 translate([slice,cavity_width,0])
 polygon(points=[[0,0],[0,cavity_height],[2*slice,cavity_height],[0,0]]);
@@ -93,8 +93,8 @@ polygon(points=[[0,0],[0,cavity_height],[-2*slice,cavity_height],[0,0]]);
 
 //2B
 difference() {
-translate([slice,-cavity_height,0])
-square([cavity_length-2*slice,cavity_height],false);
+translate([slice,-cavity_height/2,0])
+square([cavity_length-2*slice,cavity_height/2],false);
 
 translate([slice,0,0])
 polygon(points=[[0,0],[0,-cavity_height],[2*slice,-cavity_height],[0,0]]);
@@ -107,7 +107,7 @@ polygon(points=[[0,0],[0,-cavity_height],[-2*slice,-cavity_height],[0,0]]);
 //1A
 difference() {
 translate([-cavity_height,cavity_width,0])
-square([cavity_height,cavity_height],false);
+square([cavity_height*.8,cavity_height],false);
     
     translate([-cavity_height,cavity_width,0])
 polygon(points=[[0,0],[0,cavity_height],[slice*3,cavity_height],[0,0]]);
@@ -116,7 +116,7 @@ polygon(points=[[0,0],[0,cavity_height],[slice*3,cavity_height],[0,0]]);
 //1B
 difference() {
 translate([-cavity_height,-cavity_height,0])
-square([cavity_height,cavity_height],false);
+square([cavity_height*.8,cavity_height],false);
 
 translate([-cavity_height,-cavity_height,0])
 polygon(points=[[0,0],[0,cavity_height],[slice*3,0],[0,0]]);
