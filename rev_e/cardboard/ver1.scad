@@ -3,7 +3,7 @@ cavity_width=75;
 cavity_height=25;
 
 bend_band=5;
-slice=2;
+slice=4;
 smidge=30;
 
 difference() {
@@ -53,18 +53,18 @@ square([cavity_length,cavity_height],false);
 
 //3A
 translate([cavity_length+slice,cavity_width,0])
-square([cavity_height-2*slice,cavity_height],false);
+square([cavity_height-1.5*slice,cavity_height],false);
 
 //5A
-translate([2*cavity_length+cavity_height+slice,cavity_width,0])
+translate([2*cavity_length+cavity_height+.5*slice,cavity_width,0])
 square([cavity_height-2*slice,cavity_height],false);
 
 //3B
 translate([cavity_length+slice,-cavity_height,0])
-square([cavity_height-2*slice,cavity_height],false);
+square([cavity_height-1.5*slice,cavity_height],false);
 
 //5B
-translate([2*cavity_length+cavity_height+slice,-cavity_height,0])
+translate([2*cavity_length+cavity_height+.5*slice,-cavity_height,0])
 square([cavity_height-2*slice,cavity_height],false);
 
 //8A
@@ -75,22 +75,53 @@ square([cavity_length-2*smidge,bend_band],false);
 translate([cavity_length+cavity_height+smidge,-(cavity_height+bend_band+bend_band+cavity_height+bend_band),0])
 square([cavity_length-2*smidge,bend_band],false);
 
+
 //2A
+difference(){
 translate([slice,cavity_width,0])
 square([cavity_length-2*slice,cavity_height],false);
 
+translate([slice,cavity_width,0])
+polygon(points=[[0,0],[0,cavity_height],[2*slice,cavity_height],[0,0]]);
+    
+translate([cavity_length-slice,cavity_width,0])
+polygon(points=[[0,0],[0,cavity_height],[-2*slice,cavity_height],[0,0]]);
+}
+
+
+
+
 //2B
+difference() {
 translate([slice,-cavity_height,0])
 square([cavity_length-2*slice,cavity_height],false);
 
+translate([slice,0,0])
+polygon(points=[[0,0],[0,-cavity_height],[2*slice,-cavity_height],[0,0]]);
+    
+translate([cavity_length-slice,0,0])
+polygon(points=[[0,0],[0,-cavity_height],[-2*slice,-cavity_height],[0,0]]);
+    
+}
+
 //1A
-translate([-cavity_height+slice,cavity_width,0])
-square([cavity_height-2*slice,cavity_height],false);
+difference() {
+translate([-cavity_height,cavity_width,0])
+square([cavity_height,cavity_height],false);
+    
+    translate([-cavity_height,cavity_width,0])
+polygon(points=[[0,0],[0,cavity_height],[slice*3,cavity_height],[0,0]]);
+}
 
 //1B
-translate([-cavity_height+slice,-cavity_height,0])
-square([cavity_height-2*slice,cavity_height],false);
+difference() {
+translate([-cavity_height,-cavity_height,0])
+square([cavity_height,cavity_height],false);
 
+translate([-cavity_height,-cavity_height,0])
+polygon(points=[[0,0],[0,cavity_height],[slice*3,0],[0,0]]);
+    
+}
 }
 
 
