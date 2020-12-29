@@ -2,6 +2,7 @@ cavity_length=100;
 cavity_width=75;
 cavity_height=25;
 
+// some dimensions used for cuts and small adjustments
 bend_band=5;
 slice=4;
 smidge=30;
