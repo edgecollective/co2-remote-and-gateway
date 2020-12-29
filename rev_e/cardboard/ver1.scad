@@ -6,8 +6,37 @@ bend_band=5;
 slice=4;
 smidge=30;
 
+// mic
+mic_radius = 5;
+mic_x = 68.5; //x position of center of mic, measured from left of pcb
+mic_y = 52.5; //y position of center of mic, measured from bottom edge of pcb
+
+// button 1
+button1_radius = 3.5; //mm
+button1_y = 12.132; //y position of button, measured from bottom of pcb(center of its thickness)
+button1_z = 5; //z position of button, measured from location of pcb bottom
+
+// button 2
+button2_radius = button1_radius;
+button2_y = 22.57;
+button2_z = 5;
+
+//screen
+screen_x = 20; //x position of left side of screen, measured from left side of pcb
+screen_y = 32; //y position of bottom of screen, measured from bottom of pcb
+screen_dx = 35; //length of screen (x dim)
+screen_dy = 20; // width of screen (y dim)
+
+// usb opening
+usb_y = 44.662; //y position of usb, measured from pcb bottom
+usb_dy = 10; // width of usb opening
+usb_z = 15; //z position of usb, measured from pcb bottom
+usb_dz = 8; // height of usb opening
+
+
 difference() {
 union() {
+    
     //1
 translate([-cavity_height,0,0])
 square([cavity_height,cavity_width],false);
@@ -45,10 +74,10 @@ square([cavity_length,bend_band],false);
 
 //8
 translate([cavity_length+cavity_height,cavity_width+cavity_height+bend_band+bend_band,0])
-square([cavity_length,cavity_height],false);
+square([cavity_length,cavity_height*.8],false);
 
 //9
-translate([cavity_length+cavity_height,-(cavity_height+bend_band+bend_band+cavity_height),0])
+translate([cavity_length+cavity_height,-(cavity_height+bend_band+bend_band+cavity_height*.8),0])
 square([cavity_length,cavity_height],false);
 
 //3A
@@ -68,12 +97,12 @@ translate([2*cavity_length+cavity_height+.5*slice,-cavity_height,0])
 square([cavity_height-2*slice,cavity_height],false);
 
 //8A
-translate([cavity_length+cavity_height+smidge,cavity_width+cavity_height+bend_band+bend_band+cavity_height,0])
-square([cavity_length-2*smidge,bend_band*2],false);
+translate([cavity_length+cavity_height+smidge,cavity_width+cavity_height+bend_band+bend_band+cavity_height*.8,0])
+square([cavity_length-2*smidge,bend_band*3],false);
 
 //9A
 translate([cavity_length+cavity_height+smidge,-(cavity_height+bend_band+bend_band+cavity_height+bend_band*2),0])
-square([cavity_length-2*smidge,bend_band*2],false);
+square([cavity_length-2*smidge,bend_band*3],false);
 
 
 //2A
@@ -134,8 +163,33 @@ square([cavity_length-2*smidge,bend_band],false);
 translate([cavity_length+cavity_height+smidge,0,0])
 square([cavity_length-2*smidge,bend_band],false);
 
+//screen
+translate([cavity_length-(screen_x+screen_dx),screen_y,0])
+    square([screen_dx,screen_dy],false);
+
+//mic
+    translate([cavity_length-mic_x,mic_y,0])
+    circle(r=mic_radius);
 }
 
+
+// button 1
+button1_radius = 3.5; //mm
+button1_y = 12.132; //y position of button, measured from bottom of pcb(center of its thickness)
+button1_z = 5; //z position of button, measured from location of pcb bottom
+
+translate([cavity_length+cavity_height-button1_z,button1_y,0])
+circle(r=button1_radius);
+
+// button 2
+translate([cavity_length+cavity_height-button2_z,button2_y,0])
+circle(r=button1_radius);
+
+//usb 
+usb_y = 44.662; //y position of usb, measured from pcb bottom
+usb_dy = 10; // width of usb opening
+usb_z = 15; //z position of usb, measured from pcb bottom
+usb_dz = 8; // height of usb opening
 
 }
 
