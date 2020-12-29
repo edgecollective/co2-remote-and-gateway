@@ -31,7 +31,7 @@ outer_h = cavity_h + 2*wall_thickness + 2*minkowski_radius;
 //top lid
 lid_l   = outer_l - 5*wall_thickness;
 lid_w   = outer_w - 5*wall_thickness;
-lid_z   = outer_h;
+lid_z   = outer_h - 2*minkowski_radius - 3/2*wall_thickness; //FIXME a little hacky
 lid_h   = wall_thickness;
 
 ORIGIN_TO_PCB_VECTOR = [minkowski_radius+wall_thickness,
@@ -39,6 +39,7 @@ ORIGIN_TO_PCB_VECTOR = [minkowski_radius+wall_thickness,
                         pcb_vertical_location];
 
 //screw holes
+M2p5_PASSTHROUGH_DRILL = 2.7; //mm
 M2p5_TAP_DRILL = 2.05; //mm
 
 // button 1
@@ -170,14 +171,14 @@ module enclosureBottom() {
 }
 
 module enclosureLid() {
-    translate([outer_l/2,outer_w/2,outer_h - 2*minkowski_radius - 3/2*wall_thickness])
+    translate([outer_l/2,outer_w/2,lid_z])
     intersection(){
         //this is the outer solid
         minkowski()
         {
             cube([lid_l - minkowski_radius,
                   lid_w - minkowski_radius,
-                  lid_z],
+                  outer_h],
                   center=true);
             sphere(minkowski_radius);
         };
@@ -189,19 +190,29 @@ module enclosureHoles() {
     //lid & bottom screw holes
     translate([outer_l/2,outer_w/2,0])
     union(){
-        off = 3*minkowski_radius/4;
+        off_xy = 3*minkowski_radius/4;
+        taper_h = 2*wall_thickness;
+        taper_off_z = lid_z-taper_h+wall_thickness/2 + 0.1;
         //lower left
-        translate([-outer_l/2 + off, -outer_w/2 + off,-outer_h/2])
-        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h);
+        translate([-outer_l/2 + off_xy, -outer_w/2 + off_xy,-outer_h/2])
+        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h); //tap drill 
+        translate([-outer_l/2 + off_xy, -outer_w/2 + off_xy,taper_off_z])
+        #cylinder(r1=M2p5_TAP_DRILL, r2=M2p5_PASSTHROUGH_DRILL, h=taper_h); //pass through
         //upper left
-        translate([-outer_l/2 + off,  outer_w/2 - off,-outer_h/2])
-        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h);
+        translate([-outer_l/2 + off_xy,  outer_w/2 - off_xy,-outer_h/2])
+        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h); //tap drill 
+        translate([-outer_l/2 + off_xy,  outer_w/2 - off_xy,taper_off_z])
+        #cylinder(r1=M2p5_TAP_DRILL, r2=M2p5_PASSTHROUGH_DRILL, h=taper_h); //pass through
         //lower right
-        translate([ outer_l/2 - off, -outer_w/2 + off,-outer_h/2])
-        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h);
+        translate([ outer_l/2 - off_xy, -outer_w/2 + off_xy,-outer_h/2])
+        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h); //tap drill 
+        translate([ outer_l/2 - off_xy, -outer_w/2 + off_xy,taper_off_z])
+        #cylinder(r1=M2p5_TAP_DRILL, r2=M2p5_PASSTHROUGH_DRILL, h=taper_h); //pass through
         //upper right
-        translate([ outer_l/2 - off,  outer_w/2 - off,-outer_h/2])
-        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h);
+        translate([ outer_l/2 - off_xy,  outer_w/2 - off_xy,-outer_h/2])
+        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h); //tap drill 
+        translate([ outer_l/2 - off_xy,  outer_w/2 - off_xy,taper_off_z])
+        #cylinder(r1=M2p5_TAP_DRILL, r2=M2p5_PASSTHROUGH_DRILL, h=taper_h); //pass through
     }
 
     translate(ORIGIN_TO_PCB_VECTOR)    
@@ -250,7 +261,7 @@ module enclosureHoles() {
 module enclosure() {
     difference() {
         union(){
-            enclosureBottom();
+            //enclosureBottom();
             enclosureLid();
         }
         enclosureHoles();
