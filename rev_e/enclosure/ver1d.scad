@@ -28,15 +28,18 @@ outer_l = cavity_l + 2*wall_thickness + 2*minkowski_radius;
 outer_w = cavity_w + 2*wall_thickness + 2*minkowski_radius;
 outer_h = cavity_h + 2*wall_thickness + 2*minkowski_radius;
 
-//top cover height
-cover_height = 10;
-lip_height   = wall_thickness;
-lip_width    = wall_thickness/2;
+//top lid
+lid_l   = outer_l - 5*wall_thickness;
+lid_w   = outer_w - 5*wall_thickness;
+lid_z   = outer_h;
+lid_h   = wall_thickness;
 
 ORIGIN_TO_PCB_VECTOR = [minkowski_radius+wall_thickness,
                         minkowski_radius+wall_thickness,
                         pcb_vertical_location];
 
+//screw holes
+M2p5_TAP_DRILL = 2.05; //mm
 
 // button 1
 button1_radius = 3.5; //mm
@@ -166,9 +169,43 @@ module enclosureBottom() {
     } 
 }
 
+module enclosureLid() {
+    translate([outer_l/2,outer_w/2,outer_h - 2*minkowski_radius - 3/2*wall_thickness])
+    intersection(){
+        //this is the outer solid
+        minkowski()
+        {
+            cube([lid_l - minkowski_radius,
+                  lid_w - minkowski_radius,
+                  lid_z],
+                  center=true);
+            sphere(minkowski_radius);
+        };
+        cube([2*outer_l,2*outer_w,lid_h], center=true);
+    } 
+}
+
 module enclosureHoles() {
+    //lid & bottom screw holes
+    translate([outer_l/2,outer_w/2,0])
+    union(){
+        off = 3*minkowski_radius/4;
+        //lower left
+        translate([-outer_l/2 + off, -outer_w/2 + off,-outer_h/2])
+        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h);
+        //upper left
+        translate([-outer_l/2 + off,  outer_w/2 - off,-outer_h/2])
+        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h);
+        //lower right
+        translate([ outer_l/2 - off, -outer_w/2 + off,-outer_h/2])
+        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h);
+        //upper right
+        translate([ outer_l/2 - off,  outer_w/2 - off,-outer_h/2])
+        #cylinder(r=M2p5_TAP_DRILL, h=2*outer_h);
+    }
+
     translate(ORIGIN_TO_PCB_VECTOR)    
-    union() {
+    union() {        
         // USB
         usb_l = 20;
         #translate([-usb_l,usb_y,usb_z])
@@ -212,11 +249,14 @@ module enclosureHoles() {
 
 module enclosure() {
     difference() {
-        enclosureBottom();
+        union(){
+            enclosureBottom();
+            enclosureLid();
+        }
         enclosureHoles();
 
     }
-    pcb_platform(); //NOTE dev use only!
+    //pcb_platform(); //NOTE dev use only!
 
 }
 
