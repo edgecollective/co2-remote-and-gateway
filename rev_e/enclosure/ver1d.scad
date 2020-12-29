@@ -1,5 +1,5 @@
 /* This module constructs the main body of the enclosure. First, we name the module: */
-
+$fn = 50; //NUMBER OF FRAGMENTS for arc rendering
 //pcb dimensions (mm)
 pcb_l = 92; // (x dim, edges of PCB)
 pcb_w = 69.5; // (y dim, edges of PCB)
@@ -7,17 +7,7 @@ pcb_h = 30; // (z dim, from bottom of PCB to top with placed components / header
 
 wall_thickness = 2.5;
 buffer = 10;
-
-// inner cubic cavity size overall, not including minkowski radius
-cavity_l = pcb_l; // x dim
-cavity_w = pcb_w; // y dim
-cavity_h = pcb_h; // z dim
-
-// outer dimensions
-minkowski_radius = buffer;
-outer_l = cavity_l + 2*wall_thickness + minkowski_radius;
-outer_w = cavity_w + 2*wall_thickness + minkowski_radius;
-outer_h = cavity_h + 2*wall_thickness + minkowski_radius;
+minkowski_radius = buffer; //special parameter for box rounding
 
 //base specific dimensions
 base_height = pcb_h + 10;
@@ -28,11 +18,24 @@ pcb_platform_thickness = 2;
 //pcb_vertical_location = wall_thickness;
 pcb_vertical_location = minkowski_radius+pcb_h/5;
 
+// inner cubic cavity size overall, not including minkowski radius
+cavity_l = pcb_l; // x dim
+cavity_w = pcb_w; // y dim
+cavity_h = pcb_vertical_location + pcb_h; // z dim
+
+// outer dimensions
+outer_l = cavity_l + 2*wall_thickness + 2*minkowski_radius;
+outer_w = cavity_w + 2*wall_thickness + 2*minkowski_radius;
+outer_h = cavity_h + 2*wall_thickness + 2*minkowski_radius;
 
 //top cover height
 cover_height = 10;
 lip_height   = wall_thickness;
 lip_width    = wall_thickness/2;
+
+ORIGIN_TO_PCB_VECTOR = [minkowski_radius+wall_thickness,
+                        minkowski_radius+wall_thickness,
+                        pcb_vertical_location];
 
 
 // button 1
@@ -90,141 +93,133 @@ h4_y=3.522;
 
 
 module pcb_platform() {
-    translate([minkowski_radius,
-               minkowski_radius,
-               pcb_vertical_location ])
+    translate(ORIGIN_TO_PCB_VECTOR)
     cube([cavity_l,cavity_w,pcb_platform_thickness],false);
 }
 
-module enclosure() {
-    union(){
+module minkowski_dish(l,w,h,t,r){
+    //l, w, h pertain to outer_dimensions
     //shift the origin to the outer bounding box bottom left corner
-    translate([outer_l/2 + minkowski_radius/2,
-               outer_w/2 + minkowski_radius/2,
-               outer_h/2 + minkowski_radius/2])
+    
     difference()
     {
         //this is the outer solid
         minkowski()
         {
-            cube([outer_l - minkowski_radius,
-                  outer_w - minkowski_radius,
-                  outer_h - minkowski_radius],center=true);
-            sphere(minkowski_radius);
+            cube([l-2*r,w-2*r,h-2*r],center=true);
+            sphere(r);
         };
         //this is the inner cavity
         minkowski()
         {
-            cube([cavity_l,
-                  cavity_w,
-                  cavity_h],center=true);
-            sphere(minkowski_radius);
+            cube([l-2*r-2*t,w-2*r-2*t,h-2*r-2*t],center=true);
+            sphere(r);
         };
-
+        //this cuts the top off
+        translate([0,0,h-2*r-2*t])
+        cube([2*l,2*w,h], center=true);
     }
-    pcb_platform();
 }
+
+module enclosureBottom() {
+    translate([outer_l/2,outer_w/2,outer_h/2])
+    union(){
+        //outer shell
+        minkowski_dish(l=outer_l,
+                       w=outer_w,
+                       h=outer_h,
+                       t=wall_thickness/2,
+                       r=minkowski_radius
+                       );
+        //inner shell, fcylinderorms recessed flange for lid
+        minkowski_dish(l=outer_l-wall_thickness,
+                       w=outer_w-wall_thickness,
+                       h=outer_h-wall_thickness,
+                       t=wall_thickness/2,
+                       r=minkowski_radius
+                       );
+        //posts for lid screws (this is crazy)
+        intersection(){
+            t = 3*wall_thickness;
+            translate([0,0,t])
+            minkowski_dish(l=outer_l-wall_thickness,
+                       w=outer_w-wall_thickness,
+                       h=outer_h+t,
+                       t=t,
+                       r=minkowski_radius
+                       );
+            union(){
+                translate([-outer_l/2,-outer_w/2,-outer_h/2+wall_thickness])
+                rotate([0,0,45])
+                cube([3*minkowski_radius,3*minkowski_radius,2*outer_h],center=true);
+                translate([ outer_l/2,-outer_w/2,-outer_h/2+wall_thickness])
+                rotate([0,0,45])
+                cube([3*minkowski_radius,3*minkowski_radius,2*outer_h],center=true);
+                translate([ outer_l/2, outer_w/2,-outer_h/2+wall_thickness])
+                rotate([0,0,45])
+                cube([3*minkowski_radius,3*minkowski_radius,2*outer_h],center=true);
+                translate([-outer_l/2, outer_w/2,-outer_h/2+wall_thickness])
+                rotate([0,0,45])
+                cube([3*minkowski_radius,3*minkowski_radius,2*outer_h],center=true);
+            }
+        }
+    } 
 }
 
 module enclosureHoles() {
+    translate(ORIGIN_TO_PCB_VECTOR)    
+    union() {
+        // USB
+        usb_l = 20;
+        #translate([-usb_l,usb_y,usb_z])
+        cube([usb_l, usb_dy, usb_dz]);
+        // button #1
+        button1_l = 20;
+        #translate([0,button1_y,button1_z])
+        rotate([0,-90,0])
+        cylinder(r=button1_radius, h=button1_l);
+        // button #2
+        button2_l = 20;
+        #translate([0,button2_y,button2_z])
+        rotate([0,-90,0])
+        cylinder(r=button2_radius, h=button2_l);
+        // lora antenna hole
+        lora_l = 20;
+        #translate([lora_x,cavity_w,lora_z])
+        rotate([-90,0,0])
+        cylinder(r=lora_hole_radius, h=lora_l);
+        //pcb hole 1
+        #translate([h1_x,h1_y,0])
+        cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
+        //pcb hole 2
+        #translate([h2_x,h2_y,0])
+        cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
+        //pcb hole 3
+        #translate([h3_x,h3_y,0])
+        cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
+        //pcb hole 4
+        #translate([h4_x,h4_y,0])
+        cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
+        //screen 
+        #translate([screen_x,screen_y,0])
+        cube([screen_dx,screen_dy,20],center=false);  
+         //mic
+        #translate([mic_x,mic_y,0])
+        cylinder(r=mic_radius, h=pcb_platform_thickness*4);
 
-union() {
-
-// USB
-translate([-wall_thickness,minkowski_radius+usb_y,pcb_vertical_location+usb_z])
-cube([3*wall_thickness, usb_dy, usb_dz]);
-
-// button #1
-translate([minkowski_radius,minkowski_radius+button1_y,pcb_vertical_location+button1_z])
-rotate([0,-90,0])
-cylinder(r=button1_radius, h=5*wall_thickness);
-    
-// button #2
-translate([minkowski_radius,minkowski_radius+button2_y,pcb_vertical_location+button2_z])
-rotate([0,-90,0])
-cylinder(r=button2_radius, h=5*wall_thickness);
-    
-    // lora antenna hole
-translate([minkowski_radius+lora_x,minkowski_radius+cavity_w,pcb_vertical_location+lora_z])
-rotate([-90,0,0])
-cylinder(r=lora_hole_radius, h=10*wall_thickness);
-
-
-//pcb hole 1
-    translate([minkowski_radius+h1_x,minkowski_radius+h1_y,pcb_vertical_location])
-cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
-
-//pcb hole 2
-    translate([minkowski_radius+h2_x,minkowski_radius+h2_y,pcb_vertical_location])
-cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
-
-//pcb hole 3
-    translate([minkowski_radius+h3_x,minkowski_radius+h3_y,pcb_vertical_location])
-cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
-
-//pcb hole 4
-    translate([minkowski_radius+h4_x,minkowski_radius+h4_y,pcb_vertical_location])
-cylinder(r=mounting_hole_radius, h=pcb_platform_thickness*4);
-
-//screen 
- translate([minkowski_radius+screen_x,minkowski_radius+screen_y,pcb_vertical_location])
- cube([screen_dx,screen_dy,20],center=false);
- 
- 
- //mic
- translate([minkowski_radius+mic_x,minkowski_radius+mic_y,pcb_vertical_location])
- cylinder(r=mic_radius, h=pcb_platform_thickness*4);
-/*
-// button #2
-translate([-cavity_l/2,button2_y,button2_z])
-rotate([0,-90,0])
-cylinder(r=button2_radius, h=10*wall_thickness);
-    
-// Screen
-translate([screen_x-screen_dx/2,screen_y-screen_dy/2,cavity_h/2])
-cube([screen_dx, screen_dy,10*wall_thickness]);
-
-// mic
-translate([mic_x,mic_y,cavity_h/2-10*wall_thickness/2])
-cylinder(r=mic_radius, h=20*wall_thickness);
-*/
-
-}
+    }
 }
 
-module concat() {
+module enclosure() {
+    difference() {
+        enclosureBottom();
+        enclosureHoles();
+
+    }
+    pcb_platform(); //NOTE dev use only!
+
+}
 
 
-difference() {
+// RENDER BOTTOM
 enclosure();
-enclosureHoles();
-}
-
-}
-
-
-// RENDER FULL
-//concat();
-
-/* To actually print, we’ll need to render it in two separate halves which we will attach later. So, comment out the above concat() command and instead run the below code to render the top only */
-
-
-// RENDER COVER (by subtracting bottom)
-//difference() {
-//concat();
-//translate([0,0,-cover_height])
-//cube([cavity_l*1.5,cavity_w*1.5,cavity_h], center=true);
-////carve the lip out of the rim
-// 
-//}
-
-//translate([0,0,cover_height-lip_height-wall_thickness/2])
-//cube([cavity_l+lip_width/2,cavity_w+lip_width/2,lip_height]);   
-
-
-//// RENDER BOTTOM (by subtracting top)
-difference() {
-concat();
-translate([-outer_l/2,-outer_w/2,base_height])
-cube([outer_l*2,outer_w*2,outer_h]);
-}
