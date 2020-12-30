@@ -43,7 +43,7 @@ M2p5_PASSTHROUGH_DRILL = 2.7/2; // radius mm
 M2p5_TAP_DRILL = 2.05/2;        // radius mm
 
 // button 1
-button1_radius = 3.5; //mm
+button1_radius = 4; //mm
 button1_y = 12.132; //y position of button, measured from bottom of pcb(center of its thickness)
 button1_z = 5; //z position of button, measured from location of pcb bottom
 
@@ -53,24 +53,24 @@ button2_y = 22.57;
 button2_z = 5;
 
 // mic
-mic_radius = 5;
+mic_radius = 6;
 mic_x = 68.5; //x position of center of mic, measured from left of pcb
 mic_y = 50.5; //y position of center of mic, measured from bottom edge of pcb
 
 // usb opening
-usb_y = 44.662; //y position of usb, measured from pcb bottom
-usb_dy = 10; // width of usb opening
-usb_z = 15; //z position of usb, measured from pcb bottom
-usb_dz = 8; // height of usb opening
+usb_y = 44.662; //y position of center of usb, measured from pcb bottom
+usb_dy = 15; // width of usb opening
+usb_z = 15; //z position of center of usb, measured from pcb bottom
+usb_dz = 10; // height of usb opening
 
 //screen
-screen_x = 25; //x position of left side of screen, measured from left side of pcb
-screen_y = 33.5; //y position of bottom of screen, measured from bottom of pcb
-screen_dx = 25; //length of screen (x dim)
-screen_dy = 18; // width of screen (y dim)
+screen_x = 22; //x position of left side of screen, measured from left side of pcb
+screen_y = 32; //y position of bottom of screen, measured from bottom of pcb
+screen_dx = 33; //length of screen (x dim)
+screen_dy = 20; // width of screen (y dim)
 
 //lora antenna opening
-lora_hole_radius=5/2;
+lora_hole_radius=4;
 lora_x=85;
 lora_z=15;
 
@@ -228,7 +228,7 @@ module enclosureHoles() {
     union() {        
         // USB
         usb_l = 20;
-        #translate([-usb_l,usb_y,usb_z])
+        #translate([-usb_l,usb_y-usb_dy/2,usb_z-usb_dz/2])
         cube([usb_l, usb_dy, usb_dz]);
         // button #1
         button1_l = 20;
@@ -276,7 +276,7 @@ module enclosure() {
         enclosureHoles();
 
     }
-    pcb_platform(); //NOTE dev use only!
+    //pcb_platform(); //NOTE dev use only!
 
 }
 
