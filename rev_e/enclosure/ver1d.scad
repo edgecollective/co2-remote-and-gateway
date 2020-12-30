@@ -66,7 +66,7 @@ usb_dz = 10; // height of usb opening
 //screen
 screen_x = 22; //x position of left side of screen, measured from left side of pcb
 screen_y = 32; //y position of bottom of screen, measured from bottom of pcb
-screen_dx = 28; //length of screen (x dim)
+screen_dx = 33; //length of screen (x dim)
 screen_dy = 20; // width of screen (y dim)
 
 //lora antenna opening
@@ -276,7 +276,7 @@ module enclosure() {
         enclosureHoles();
 
     }
-    pcb_platform(); //NOTE dev use only!
+    //pcb_platform(); //NOTE dev use only!
 
 }
 
