@@ -45,12 +45,12 @@ M2p5_TAP_DRILL = 2.05/2;        // radius mm
 // button 1
 button1_radius = 4; //mm
 button1_y = 12.132; //y position of button, measured from bottom of pcb(center of its thickness)
-button1_z = 5; //z position of button, measured from location of pcb bottom
+button1_z = 6; //z position of button, measured from location of pcb bottom
 
 // button 2
 button2_radius = button1_radius;
 button2_y = 22.57;
-button2_z = 5;
+button2_z = button1_z;
 
 // mic
 mic_radius = 6;
@@ -65,9 +65,10 @@ usb_dz = 10; // height of usb opening
 
 //screen
 screen_x = 22; //x position of left side of screen, measured from left side of pcb
-screen_y = 32; //y position of bottom of screen, measured from bottom of pcb
 screen_dx = 33; //length of screen (x dim)
-screen_dy = 20; // width of screen (y dim)
+screen_y = 36; //y position of bottom of screen, measured from bottom of pcb
+screen_dy = 18; // width of screen (y dim)
+
 
 //lora antenna opening
 lora_hole_radius=4;
