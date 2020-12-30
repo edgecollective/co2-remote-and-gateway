@@ -1,11 +1,11 @@
 /* This module constructs the main body of the enclosure. First, we name the module: */
 $fn = 50; //NUMBER OF FRAGMENTS for arc rendering
 //pcb dimensions (mm)
-pcb_l = 92; // (x dim, edges of PCB)
-pcb_w = 69.5; // (y dim, edges of PCB)
+pcb_l = 91.948; // (x dim, edges of PCB)
+pcb_w = 69.342; // (y dim, edges of PCB)
 pcb_h = 30; // (z dim, from bottom of PCB to top with placed components / headers / etc)r
 
-wall_thickness = 2.5;
+wall_thickness = 2;
 buffer = 10;
 minkowski_radius = buffer; //special parameter for box rounding
 
@@ -55,7 +55,7 @@ button2_z = 5;
 // mic
 mic_radius = 5;
 mic_x = 68.5; //x position of center of mic, measured from left of pcb
-mic_y = 52.5; //y position of center of mic, measured from bottom edge of pcb
+mic_y = 50.5; //y position of center of mic, measured from bottom edge of pcb
 
 // usb opening
 usb_y = 44.662; //y position of usb, measured from pcb bottom
@@ -64,10 +64,10 @@ usb_z = 15; //z position of usb, measured from pcb bottom
 usb_dz = 8; // height of usb opening
 
 //screen
-screen_x = 20; //x position of left side of screen, measured from left side of pcb
-screen_y = 32; //y position of bottom of screen, measured from bottom of pcb
-screen_dx = 35; //length of screen (x dim)
-screen_dy = 20; // width of screen (y dim)
+screen_x = 25; //x position of left side of screen, measured from left side of pcb
+screen_y = 33.5; //y position of bottom of screen, measured from bottom of pcb
+screen_dx = 25; //length of screen (x dim)
+screen_dy = 18; // width of screen (y dim)
 
 //lora antenna opening
 lora_hole_radius=5/2;
@@ -135,9 +135,18 @@ module enclosureBottom() {
                        t=wall_thickness/2,
                        r=minkowski_radius
                        );
-        //inner shell, fcylinderorms recessed flange for lid
-        minkowski_dish(l=outer_l-wall_thickness,
-                       w=outer_w-wall_thickness,
+        //middle channel shell, forms channel for RTV gasket seal
+        inset = 0.1; //make sure layers are merged
+        channel_depth = wall_thickness;
+        minkowski_dish(l=outer_l-wall_thickness + inset,
+                       w=outer_w-wall_thickness + inset,
+                       h=outer_h-wall_thickness - channel_depth,
+                       t=wall_thickness/2,
+                       r=minkowski_radius
+                       );
+        //inner shell, forms flange for lid
+        minkowski_dish(l=outer_l-2*wall_thickness + inset,
+                       w=outer_w-2*wall_thickness + inset,
                        h=outer_h-wall_thickness,
                        t=wall_thickness/2,
                        r=minkowski_radius
@@ -146,8 +155,8 @@ module enclosureBottom() {
         intersection(){
             t = 3*wall_thickness;
             translate([0,0,t])
-            minkowski_dish(l=outer_l-wall_thickness,
-                       w=outer_w-wall_thickness,
+            minkowski_dish(l=outer_l-2*wall_thickness + inset,
+                       w=outer_w-2*wall_thickness + inset,
                        h=outer_h+t,
                        t=t,
                        r=minkowski_radius
@@ -238,22 +247,22 @@ module enclosureHoles() {
         cylinder(r=lora_hole_radius, h=lora_l);
         //pcb hole 1
         #translate([h1_x,h1_y,-outer_h/2])
-        cylinder(r=mounting_hole_radius, h=outer_h/2);
+        cylinder(r=mounting_hole_radius, h=outer_h*.6);
         //pcb hole 2
         #translate([h2_x,h2_y,-outer_h/2])
-        cylinder(r=mounting_hole_radius, h=outer_h/2);
+        cylinder(r=mounting_hole_radius, h=outer_h*.6);
         //pcb hole 3
         #translate([h3_x,h3_y,-outer_h/2])
-        cylinder(r=mounting_hole_radius, h=outer_h/2);
+        cylinder(r=mounting_hole_radius, h=outer_h*.6);
         //pcb hole 4
         #translate([h4_x,h4_y,-outer_h/2])
-        cylinder(r=mounting_hole_radius, h=outer_h/2);
+        cylinder(r=mounting_hole_radius, h=outer_h*.6);
         //screen 
         #translate([screen_x,screen_y,0])
-        cube([screen_dx,screen_dy,20],center=false);  
+        cube([screen_dx,screen_dy,cavity_h],center=false); 
          //mic
         #translate([mic_x,mic_y,0])
-        cylinder(r=mic_radius, h=pcb_platform_thickness*4);
+        cylinder(r=mic_radius, h=cavity_h);
 
     }
 }
@@ -267,7 +276,7 @@ module enclosure() {
         enclosureHoles();
 
     }
-    //pcb_platform(); //NOTE dev use only!
+    pcb_platform(); //NOTE dev use only!
 
 }
 
