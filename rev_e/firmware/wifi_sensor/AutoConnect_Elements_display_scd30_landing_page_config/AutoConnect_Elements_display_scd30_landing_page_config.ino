@@ -182,21 +182,20 @@ void handleRoot() {
   "<h1>PVOS.org CO2 Sensor</h1>"
   "Firmware version <a href=\"https://github.com/edgecollective/co2-remote-and-gateway/tree/rev_e_wifi_config/rev_e/firmware/wifi_sensor/AutoConnect_Elements_display_scd30_landing_page\">0.2</a><br>"
   "User guide: <a href=\"http://pvos.org\">pvos.org/co2</a><br>"
-  "<h3>Data & Graphs</h3>"
-   "Data Feed Key: ");
-
-   page+= String(bayou_feed);
-  page+= String(F("<br>"));
+  //"<h3>Data & Graphs</h3>");
+  "<br><br>");
 
 // bayou graphs / drive landing page 
-page+= String(F("<a href=\""));
+page+= String(F("<b>Feed:</b> <a href=\""));
   page+= String(drive_url);
-  page+= String(F("\">Live graphs of data</a><br>"));
+  page+= String(F("\">"));
+   page+= String(bayou_feed);
+   page+=String(F("</a><br><br>"));
 
   // csv landing page
-  page+= String(F("<a href=\""));
+  page+= String(F("<b>Data:</b> <a href=\""));
    page+= String(csv_url);
-  page+= String(F("\">CSV download</a><br>"));
+  page+= String(F("\">CSV</a><br>"));
 
   
 /*
@@ -212,7 +211,7 @@ page+= String(F("<a href=\""));
 void setup() {
 
 sprintf (csv_url, "%s%s%s%s", bayou_base_url, "/api/drives/", bayou_feed, "/csv");
-
+sprintf (drive_url, "%s%s%s", bayou_base_url, "/drives/", bayou_feed);
 sprintf (put_url, "%s%s%s", bayou_base_url, "/api/drives/", bayou_feed);
 
   u8x8.begin();
