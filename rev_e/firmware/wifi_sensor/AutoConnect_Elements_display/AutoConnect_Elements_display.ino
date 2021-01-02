@@ -228,7 +228,7 @@ u8x8.setFont(u8x8_font_7x14B_1x2_f);
 u8x8.setCursor(0,0); 
  u8x8.print("Configured!");
 u8x8.setCursor(0,2);
-u8x8.print("ssid: ");
+u8x8.print("ap*: ");
 u8x8.print(WiFi.SSID());
 u8x8.setCursor(0,4);
 u8x8.print("ip: ");
