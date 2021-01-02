@@ -163,7 +163,8 @@ void handleRoot() {
     ".button {"
     "display:inline-block;"
     "border-radius:7px;"
-    "background:#73ad21;"
+    //"background:#73ad21;"
+    "background:green;"
     "margin:0 10px 0 10px;"
     "padding:10px 20px 10px 20px;"
     "text-decoration:none;"
@@ -173,13 +174,18 @@ void handleRoot() {
 "</head>"
 "<body>"
   "<div class=\"menu\">" AUTOCONNECT_LINK(BAR_32) "</div>"
-  "BUILT-IN LED<br>"
-  "GPIO(");
-  page += String(BUILTIN_LED);
-  page += String(F(") : <span style=\"font-weight:bold;color:"));
-  page += digitalRead(BUILTIN_LED) ? String("Tomato\">HIGH") : String("SlateBlue\">LOW");
-  page += String(F("</span>"));
-  page += String(F("<p><a class=\"button\" href=\"/io?v=low\">low</a><a class=\"button\" href=\"/io?v=high\">high</a></p>"));
+  "<h1>PVOS.org CO2 Sensor</h1>"
+  "Firmware version <a href=\"https://github.com/edgecollective/co2-remote-and-gateway/tree/rev_e_wifi_config/rev_e/firmware/wifi_sensor/AutoConnect_Elements_display_scd30_landing_page\">0.2</a><br>"
+  "User guide: <a href=\"http://pvos.org\">pvos.org/co2</a><br>"
+  "<h3>Data & Graphs</h3>"
+  "Bayou feed: <br><a href=\"http://159.65.226.222:3000/api/drives/f447b1c81ee96c7c0783fc4a7c1ac379cebe92bef8459803f89665f76b023465/csv\">f447b1c81ee96c7c0783fc4a7c1ac379cebe92bef8459803f89665f76b023465</a><br>"
+  "<br>Bayou private key: <br>XXXXXXX<br>"
+  "<h3>Next steps:<h3>");
+  //page += String(BUILTIN_LED);
+  //page += String(F(") : <span style=\"font-weight:bold;color:"));
+  //page += digitalRead(BUILTIN_LED) ? String("Tomato\">HIGH") : String("SlateBlue\">LOW");
+  //page += String(F("</span>"));
+  page += String(F("<p><a class=\"button\" href=\"/io?v=low\">calibrate</a><a class=\"button\" href=\"/io?v=high\">configure</a></p>"));
   page += String(F("</body></html>"));
   portal.host().send(200, "text/html", page);
 }
