@@ -179,7 +179,7 @@ void handleRoot() {
 "</head>"
 "<body>"
   "<div class=\"menu\">" AUTOCONNECT_LINK(BAR_32) "</div>"
-  "<h1>PVOS.org CO2 Sensor</h1>"
+  "<h1>CO2 Sensor</h1>"
   "Firmware version <a href=\"https://github.com/edgecollective/co2-remote-and-gateway/tree/rev_e_wifi_config/rev_e/firmware/wifi_sensor/AutoConnect_Elements_display_scd30_landing_page\">0.2</a><br>"
   "User guide: <a href=\"http://pvos.org\">pvos.org/co2</a><br>"
   //"<h3>Data & Graphs</h3>");
