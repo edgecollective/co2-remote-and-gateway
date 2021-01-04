@@ -60,6 +60,22 @@ unsigned long lastPub = 0;
 
 #define MQTT_USER_ID  "anyone"
 
+String getValue(String data, char separator, int index)
+{
+    int found = 0;
+    int strIndex[] = { 0, -1 };
+    int maxIndex = data.length() - 1;
+
+    for (int i = 0; i <= maxIndex && found <= index; i++) {
+        if (data.charAt(i) == separator || i == maxIndex) {
+            found++;
+            strIndex[0] = strIndex[1] + 1;
+            strIndex[1] = (i == maxIndex) ? i+1 : i;
+        }
+    }
+    return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
+
 bool mqttConnect() {
   static const char alphanum[] = "0123456789"
                                  "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -134,8 +150,8 @@ String saveParams(AutoConnectAux& aux, PageArgument& args) {
   apiKey.trim();
   
   String upd = args.arg("period");
-  updateInterval = upd.substring(0, 2).toInt() * 1000;
-
+  updateInterval = upd.substring(0, 2).toInt() * 60000;
+  
   String uniqueid = args.arg("uniqueid");
 
   hostName = args.arg("hostname");
@@ -154,13 +170,14 @@ String saveParams(AutoConnectAux& aux, PageArgument& args) {
   echo.value += "Channel ID: " + channelId + "<br>";
   echo.value += "User Key: " + userKey + "<br>";
   echo.value += "API Key: " + apiKey + "<br>";
-  echo.value += "Update period: " + String(updateInterval / 1000) + " sec.<br>";
+  echo.value += "Update period: " + String(updateInterval / 60000) + " min<br>";
   echo.value += "Use APID unique: " + uniqueid + "<br>";
   echo.value += "ESP host name: " + hostName + "<br>";
 
   return String("");
 }
 
+/*
 void handleRoot() {
   String  content =
     "<html>"
@@ -173,6 +190,50 @@ void handleRoot() {
     "</body>"
     "</html>";
 
+  WiFiWebServer&  webServer = portal.host();
+  webServer.send(200, "text/html", content);
+}
+*/
+
+void handleRoot() {
+  String  content = PSTR(
+    "<style type=\"text/css\">"
+    "body {"
+    "-webkit-appearance:none;"
+    "-moz-appearance:none;"
+    "font-family:'Arial',sans-serif;"
+    "text-align:left;"
+    "}"
+    ".menu > a:link {"
+    "position: absolute;"
+    "display: inline-block;"
+    "right: 12px;"
+    "padding: 0 6px;"
+    "text-decoration: none;"
+    "}"
+    ".button {"
+    "display:inline-block;"
+    "border-radius:7px;"
+    //"background:#73ad21;"
+    "background:green;"
+    "margin:0 10px 0 10px;"
+    "padding:10px 20px 10px 20px;"
+    "text-decoration:none;"
+    "color:#000000;"
+    "}"
+  "</style>"
+"</head>"
+"<body>"
+  "<div class=\"menu\">" AUTOCONNECT_LINK(BAR_32) "</div>"
+  "<h1>CO2 Sensor</h1>"
+  "Firmware version <a href=\"https://github.com/edgecollective/co2-remote-and-gateway/tree/rev_e_wifi_config/rev_e/firmware/wifi_sensor/AutoConnect_Elements_display_scd30_landing_page\">0.2</a><br>"
+  "User guide: <a href=\"http://pvos.org\">pvos.org/co2</a><br>");
+  //"<h3>Data & Graphs</h3>");
+ // "<br><br>");
+  //content += String(F("<h3>Actions:<h3>"));
+  content += String(F("<p><a class=\"button\" href=\"/_ac/config\">WiFi Settings</a><a class=\"button\" href=\"/mqtt_setting\">Bayou Settings</a></p>"));
+  
+  content += String(F("</body></html>"));
   WiFiWebServer&  webServer = portal.host();
   webServer.send(200, "text/html", content);
 }
@@ -272,6 +333,7 @@ void setup() {
 
 void loop() {
   portal.handleClient();
+  /*
   if (updateInterval > 0) {
     if (millis() - lastPub > updateInterval) {
       if (!mqttClient.connected()) {
@@ -283,4 +345,5 @@ void loop() {
       lastPub = millis();
     }
   }
+  */
 }

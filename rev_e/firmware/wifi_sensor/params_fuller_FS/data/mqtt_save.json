@@ -6,7 +6,7 @@
     {
       "name": "caption",
       "type": "ACText",
-      "value": "<h4>Parameters saved as:</h4>",
+      "value": "<h4>Bayou settings saved as:</h4>",
       "style": "text-align:center;color:#2f4f4f;padding:10px;"
     },
     {
@@ -16,8 +16,8 @@
     {
       "name": "clear",
       "type": "ACSubmit",
-      "value": "Clear channel",
-      "uri": "/mqtt_clear"
+      "value": "Back to Home",
+      "uri": "/"
     }
   ]
 }
