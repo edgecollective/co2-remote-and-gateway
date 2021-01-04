@@ -228,9 +228,6 @@ void handleRoot() {
   "<h1>CO2 Sensor</h1>"
   "Firmware version <a href=\"https://github.com/edgecollective/co2-remote-and-gateway/tree/rev_e_wifi_config/rev_e/firmware/wifi_sensor/AutoConnect_Elements_display_scd30_landing_page\">0.2</a><br>"
   "User guide: <a href=\"http://pvos.org\">pvos.org/co2</a><br>");
-  //"<h3>Data & Graphs</h3>");
- // "<br><br>");
-  //content += String(F("<h3>Actions:<h3>"));
   content += String(F("<p><a class=\"button\" href=\"/_ac/config\">WiFi Settings</a><a class=\"button\" href=\"/mqtt_setting\">Bayou Settings</a></p>"));
   
   content += String(F("</body></html>"));
@@ -290,6 +287,10 @@ void setup() {
   loadAux(AUX_MQTTSAVE);
 
   AutoConnectAux* setting = portal.aux(AUX_MQTTSETTING);
+
+  //change the menu name on the _ac landing page
+  config.title = "CO2 Sensor: WiFi Settings";
+  
   if (setting) {
     PageArgument  args;
     AutoConnectAux& mqtt_setting = *setting;
