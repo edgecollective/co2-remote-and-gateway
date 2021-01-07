@@ -309,10 +309,6 @@ Text GLabel 3150 1900 0    50   Input ~ 0
 TX
 Text GLabel 3150 2000 0    50   Input ~ 0
 RST
-Text GLabel 6950 3100 0    50   Input ~ 0
-SCL
-Text GLabel 6950 3200 0    50   Input ~ 0
-SDA
 Text GLabel 6950 3400 0    50   Input ~ 0
 36_A0
 Text GLabel 6950 3500 0    50   Input ~ 0
@@ -321,9 +317,9 @@ Text GLabel 6950 3600 0    50   Input ~ 0
 38_A2
 Text GLabel 6950 3700 0    50   Input ~ 0
 39_A3
-Text GLabel 6950 2700 0    50   Input ~ 0
+Text GLabel 6950 2900 0    50   Input ~ 0
 RX
-Text GLabel 6950 2800 0    50   Input ~ 0
+Text GLabel 6950 3000 0    50   Input ~ 0
 TX
 $Comp
 L Connector:Conn_01x03_Female J4
@@ -491,61 +487,35 @@ $EndComp
 $Comp
 L power:GND #PWR0101
 U 1 1 5FD6AB8A
-P 6675 2600
-F 0 "#PWR0101" H 6675 2350 50  0001 C CNN
-F 1 "GND" H 6680 2427 50  0000 C CNN
-F 2 "" H 6675 2600 50  0001 C CNN
-F 3 "" H 6675 2600 50  0001 C CNN
-	1    6675 2600
+P 6675 2700
+F 0 "#PWR0101" H 6675 2450 50  0001 C CNN
+F 1 "GND" H 6680 2527 50  0000 C CNN
+F 2 "" H 6675 2700 50  0001 C CNN
+F 3 "" H 6675 2700 50  0001 C CNN
+	1    6675 2700
 	0    1    1    0   
 $EndComp
 $Comp
 L power:+3V3 #PWR0105
 U 1 1 5FD6C458
-P 6950 2500
-F 0 "#PWR0105" H 6950 2350 50  0001 C CNN
-F 1 "+3V3" H 6925 2675 50  0000 C CNN
-F 2 "" H 6950 2500 50  0001 C CNN
-F 3 "" H 6950 2500 50  0001 C CNN
-	1    6950 2500
-	0    -1   -1   0   
-$EndComp
-$Comp
-L power:+3V3 #PWR0106
-U 1 1 5FEF6C10
-P 6950 2900
-F 0 "#PWR0106" H 6950 2750 50  0001 C CNN
-F 1 "+3V3" H 6925 3075 50  0000 C CNN
-F 2 "" H 6950 2900 50  0001 C CNN
-F 3 "" H 6950 2900 50  0001 C CNN
-	1    6950 2900
+P 6600 2800
+F 0 "#PWR0105" H 6600 2650 50  0001 C CNN
+F 1 "+3V3" H 6575 2975 50  0000 C CNN
+F 2 "" H 6600 2800 50  0001 C CNN
+F 3 "" H 6600 2800 50  0001 C CNN
+	1    6600 2800
 	0    -1   -1   0   
 $EndComp
 $Comp
 L power:GND #PWR0117
 U 1 1 5FEF7025
-P 6675 3000
-F 0 "#PWR0117" H 6675 2750 50  0001 C CNN
-F 1 "GND" H 6680 2827 50  0000 C CNN
-F 2 "" H 6675 3000 50  0001 C CNN
-F 3 "" H 6675 3000 50  0001 C CNN
-	1    6675 3000
+P 6625 3100
+F 0 "#PWR0117" H 6625 2850 50  0001 C CNN
+F 1 "GND" H 6630 2927 50  0000 C CNN
+F 2 "" H 6625 3100 50  0001 C CNN
+F 3 "" H 6625 3100 50  0001 C CNN
+	1    6625 3100
 	0    1    1    0   
-$EndComp
-Wire Wire Line
-	6950 2600 6675 2600
-Wire Wire Line
-	6950 3000 6675 3000
-$Comp
-L Connector:Conn_01x15_Female J3
-U 1 1 5FEFD935
-P 7150 3200
-F 0 "J3" H 7178 3226 50  0000 L CNN
-F 1 "Conn_01x15_Female" H 7178 3135 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x15_P2.54mm_Vertical" H 7150 3200 50  0001 C CNN
-F 3 "~" H 7150 3200 50  0001 C CNN
-	1    7150 3200
-	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0118
@@ -610,4 +580,120 @@ Wire Wire Line
 	5400 4400 5400 4225
 Wire Wire Line
 	5525 4300 5150 4300
+$Comp
+L Connector:Conn_01x04_Female J8
+U 1 1 60000D99
+P 8875 3125
+F 0 "J8" H 8903 3101 50  0000 L CNN
+F 1 "Conn_01x04_Female" H 8903 3010 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 8875 3125 50  0001 C CNN
+F 3 "~" H 8875 3125 50  0001 C CNN
+	1    8875 3125
+	1    0    0    -1  
+$EndComp
+Text GLabel 8675 3325 0    50   Input ~ 0
+SCL
+Text GLabel 8675 3225 0    50   Input ~ 0
+SDA
+$Comp
+L power:GND #PWR0122
+U 1 1 60000DA1
+P 8300 3025
+F 0 "#PWR0122" H 8300 2775 50  0001 C CNN
+F 1 "GND" H 8305 2852 50  0000 C CNN
+F 2 "" H 8300 3025 50  0001 C CNN
+F 3 "" H 8300 3025 50  0001 C CNN
+	1    8300 3025
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0123
+U 1 1 60000DA7
+P 8550 2950
+F 0 "#PWR0123" H 8550 2800 50  0001 C CNN
+F 1 "+3V3" V 8565 3078 50  0000 L CNN
+F 2 "" H 8550 2950 50  0001 C CNN
+F 3 "" H 8550 2950 50  0001 C CNN
+	1    8550 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8675 3125 8550 3125
+Wire Wire Line
+	8550 3125 8550 2950
+Wire Wire Line
+	8675 3025 8300 3025
+Text GLabel 6950 2600 0    50   Input ~ 0
+VUSB
+$Comp
+L power:+3V3 #PWR0106
+U 1 1 6000DA3E
+P 6950 3200
+F 0 "#PWR0106" H 6950 3050 50  0001 C CNN
+F 1 "+3V3" H 6925 3375 50  0000 C CNN
+F 2 "" H 6950 3200 50  0001 C CNN
+F 3 "" H 6950 3200 50  0001 C CNN
+	1    6950 3200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:Conn_01x14_Female J3
+U 1 1 6003FCAE
+P 7150 3200
+F 0 "J3" H 7178 3176 50  0000 L CNN
+F 1 "Conn_01x14_Female" H 7178 3085 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x14_P2.54mm_Vertical" H 7150 3200 50  0001 C CNN
+F 3 "~" H 7150 3200 50  0001 C CNN
+	1    7150 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6950 2700 6675 2700
+Wire Wire Line
+	6950 2800 6600 2800
+Wire Wire Line
+	6950 3100 6625 3100
+$Comp
+L Connector:Conn_01x04_Female J?
+U 1 1 60065C2D
+P 9450 2200
+F 0 "J?" H 9478 2176 50  0000 L CNN
+F 1 "Conn_01x04_Female" H 9478 2085 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 9450 2200 50  0001 C CNN
+F 3 "~" H 9450 2200 50  0001 C CNN
+	1    9450 2200
+	1    0    0    -1  
+$EndComp
+Text GLabel 9250 2400 0    50   Input ~ 0
+SCL
+Text GLabel 9250 2300 0    50   Input ~ 0
+SDA
+$Comp
+L power:GND #PWR?
+U 1 1 60065C39
+P 8875 2100
+F 0 "#PWR?" H 8875 1850 50  0001 C CNN
+F 1 "GND" H 8880 1927 50  0000 C CNN
+F 2 "" H 8875 2100 50  0001 C CNN
+F 3 "" H 8875 2100 50  0001 C CNN
+	1    8875 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 60065C43
+P 9125 2025
+F 0 "#PWR?" H 9125 1875 50  0001 C CNN
+F 1 "+3V3" V 9140 2153 50  0000 L CNN
+F 2 "" H 9125 2025 50  0001 C CNN
+F 3 "" H 9125 2025 50  0001 C CNN
+	1    9125 2025
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9250 2200 9125 2200
+Wire Wire Line
+	9125 2200 9125 2025
+Wire Wire Line
+	9250 2100 8875 2100
 $EndSCHEMATC
