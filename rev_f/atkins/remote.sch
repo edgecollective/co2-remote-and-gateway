@@ -178,8 +178,6 @@ Text Notes 4650 1000 0    79   ~ 0
 SCD30
 Text Notes 6000 1150 0    79   ~ 0
 BME388/90
-Text GLabel 3775 4100 0    50   Input ~ 0
-37_A1
 $Comp
 L power:+3V3 #PWR0134
 U 1 1 5FBA6970
@@ -192,11 +190,11 @@ F 3 "" H 3775 3700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R RS1
+L Device:R R5
 U 1 1 5FBA6976
 P 3775 3850
-F 0 "RS1" H 3845 3896 50  0000 L CNN
-F 1 "10K" H 3845 3805 50  0000 L CNN
+F 0 "R5" H 3845 3896 50  0000 L CNN
+F 1 "4.7K" H 3845 3805 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3705 3850 50  0001 C CNN
 F 3 "~" H 3775 3850 50  0001 C CNN
 	1    3775 3850
@@ -206,8 +204,6 @@ Wire Wire Line
 	3775 4100 3775 4000
 Wire Wire Line
 	4000 4100 3775 4100
-Text GLabel 3775 5150 0    50   Input ~ 0
-36_A0
 $Comp
 L power:+3V3 #PWR0136
 U 1 1 5FBA90B6
@@ -220,11 +216,11 @@ F 3 "" H 3775 4750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R RS0
+L Device:R R6
 U 1 1 5FBA90BC
 P 3775 4900
-F 0 "RS0" H 3845 4946 50  0000 L CNN
-F 1 "10K" H 3845 4855 50  0000 L CNN
+F 0 "R6" H 3845 4946 50  0000 L CNN
+F 1 "4.7K" H 3845 4855 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3705 4900 50  0001 C CNN
 F 3 "~" H 3775 4900 50  0001 C CNN
 	1    3775 4900
@@ -309,14 +305,8 @@ Text GLabel 3150 1900 0    50   Input ~ 0
 TX
 Text GLabel 3150 2000 0    50   Input ~ 0
 RST
-Text GLabel 6950 3400 0    50   Input ~ 0
-36_A0
-Text GLabel 6950 3500 0    50   Input ~ 0
-37_A1
 Text GLabel 6950 3600 0    50   Input ~ 0
 38_A2
-Text GLabel 6950 3700 0    50   Input ~ 0
-39_A3
 Text GLabel 6950 2900 0    50   Input ~ 0
 RX
 Text GLabel 6950 3000 0    50   Input ~ 0
@@ -344,41 +334,6 @@ F 3 "" H 7350 1975 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R RS2
-U 1 1 5FDD33D4
-P 1375 1800
-F 0 "RS2" H 1445 1846 50  0000 L CNN
-F 1 "500R" H 1445 1755 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1305 1800 50  0001 C CNN
-F 3 "~" H 1375 1800 50  0001 C CNN
-	1    1375 1800
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0108
-U 1 1 5FDD364E
-P 1375 1950
-F 0 "#PWR0108" H 1375 1700 50  0001 C CNN
-F 1 "GND" H 1380 1777 50  0000 C CNN
-F 2 "" H 1375 1950 50  0001 C CNN
-F 3 "" H 1375 1950 50  0001 C CNN
-	1    1375 1950
-	1    0    0    -1  
-$EndComp
-Text GLabel 1375 1350 0    50   Input ~ 0
-39_A3
-$Comp
-L Device:LED D1
-U 1 1 5FDEF6AE
-P 1375 1500
-F 0 "D1" V 1414 1382 50  0000 R CNN
-F 1 "LED" V 1323 1382 50  0000 R CNN
-F 2 "LED_THT:LED_D5.0mm" H 1375 1500 50  0001 C CNN
-F 3 "~" H 1375 1500 50  0001 C CNN
-	1    1375 1500
-	0    -1   -1   0   
-$EndComp
-$Comp
 L Mechanical:MountingHole H1
 U 1 1 5FDF5FDF
 P 5150 2550
@@ -391,14 +346,6 @@ F 3 "~" H 5150 2550 50  0001 C CNN
 $EndComp
 Text GLabel 3725 2500 2    50   Input ~ 0
 25_LED
-Text GLabel 3725 2100 2    50   Input ~ 0
-34_A6
-Text GLabel 3725 2200 2    50   Input ~ 0
-35_A7
-Text GLabel 6950 3800 0    50   Input ~ 0
-34_A6
-Text GLabel 6950 3900 0    50   Input ~ 0
-35_A7
 $Comp
 L Connector:Conn_01x04_Female J5
 U 1 1 5FE6A2E6
@@ -437,10 +384,10 @@ F 3 "" H 5400 4225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R RS3
+L Device:R R4
 U 1 1 5FE7DEE6
 P 2025 1800
-F 0 "RS3" H 2095 1846 50  0000 L CNN
+F 0 "R4" H 2095 1846 50  0000 L CNN
 F 1 "500R" H 2095 1755 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1955 1800 50  0001 C CNN
 F 3 "~" H 2025 1800 50  0001 C CNN
@@ -459,18 +406,16 @@ F 3 "" H 2025 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:LED D2
+L Device:LED D1
 U 1 1 5FE7DEFB
 P 2025 1500
-F 0 "D2" V 2064 1382 50  0000 R CNN
+F 0 "D1" V 2064 1382 50  0000 R CNN
 F 1 "LED" V 1973 1382 50  0000 R CNN
 F 2 "LED_THT:LED_D5.0mm" H 2025 1500 50  0001 C CNN
 F 3 "~" H 2025 1500 50  0001 C CNN
 	1    2025 1500
 	0    -1   -1   0   
 $EndComp
-Text GLabel 2025 1350 0    50   Input ~ 0
-25_LED
 Text GLabel 7350 2075 0    50   Input ~ 0
 38_A2
 $Comp
@@ -542,10 +487,10 @@ F 3 "" H 4400 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Switch:SW_Push SW1
+L Switch:SW_Push S1
 U 1 1 5FDA65F7
 P 4200 4100
-F 0 "SW1" H 4200 4385 50  0000 C CNN
+F 0 "S1" H 4200 4385 50  0000 C CNN
 F 1 "SW_Push" H 4200 4294 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 4200 4300 50  0001 C CNN
 F 3 "~" H 4200 4300 50  0001 C CNN
@@ -564,10 +509,10 @@ F 3 "" H 4400 5150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Switch:SW_Push SW2
+L Switch:SW_Push S0
 U 1 1 5FDC768B
 P 4200 5150
-F 0 "SW2" H 4200 5435 50  0000 C CNN
+F 0 "S0" H 4200 5435 50  0000 C CNN
 F 1 "SW_Push" H 4200 5344 50  0000 C CNN
 F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 4200 5350 50  0001 C CNN
 F 3 "~" H 4200 5350 50  0001 C CNN
@@ -623,19 +568,6 @@ Wire Wire Line
 	8550 3125 8550 2950
 Wire Wire Line
 	8675 3025 8300 3025
-Text GLabel 6950 2600 0    50   Input ~ 0
-VUSB
-$Comp
-L power:+3V3 #PWR0106
-U 1 1 6000DA3E
-P 6950 3200
-F 0 "#PWR0106" H 6950 3050 50  0001 C CNN
-F 1 "+3V3" H 6925 3375 50  0000 C CNN
-F 2 "" H 6950 3200 50  0001 C CNN
-F 3 "" H 6950 3200 50  0001 C CNN
-	1    6950 3200
-	0    -1   -1   0   
-$EndComp
 $Comp
 L Connector:Conn_01x14_Female J3
 U 1 1 6003FCAE
@@ -653,47 +585,100 @@ Wire Wire Line
 	6950 2800 6600 2800
 Wire Wire Line
 	6950 3100 6625 3100
+Text GLabel 3150 1500 0    50   Input ~ 0
+5V
+Text GLabel 6950 2600 0    50   Input ~ 0
+5V
+Text GLabel 3150 1600 0    50   Input ~ 0
+VEXT
+Text GLabel 6950 3200 0    50   Input ~ 0
+VEXT
+Text GLabel 3150 3000 0    50   Input ~ 0
+17
+Text GLabel 3150 2400 0    50   Input ~ 0
+23
+Text GLabel 6950 3700 0    50   Input ~ 0
+39_A3
+Text GLabel 6950 3800 0    50   Input ~ 0
+17
+Text GLabel 6950 3900 0    50   Input ~ 0
+23
+Text GLabel 2025 1350 0    50   Input ~ 0
+17
+Text GLabel 3775 5150 0    50   Input ~ 0
+36_A0
+Text GLabel 3775 4100 0    50   Input ~ 0
+37_A1
+Text GLabel 3725 2200 2    50   Input ~ 0
+35_ADC7_DIO1
+Text GLabel 3725 2100 2    50   Input ~ 0
+34_ADC6_DIO2
+Text GLabel 6950 3400 0    50   Input ~ 0
+34_ADC6_DIO2
+Text GLabel 6950 3500 0    50   Input ~ 0
+35_ADC7_DIO1
 $Comp
-L Connector:Conn_01x04_Female J?
-U 1 1 60065C2D
-P 9450 2200
-F 0 "J?" H 9478 2176 50  0000 L CNN
-F 1 "Conn_01x04_Female" H 9478 2085 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 9450 2200 50  0001 C CNN
-F 3 "~" H 9450 2200 50  0001 C CNN
-	1    9450 2200
+L Connector:Screw_Terminal_01x03 J6
+U 1 1 601266D8
+P 1250 4000
+F 0 "J6" H 1168 3675 50  0000 C CNN
+F 1 "Screw_Terminal_01x03" V 1375 4050 50  0000 C CNN
+F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-3-3.5-H_1x03_P3.50mm_Horizontal" H 1250 4000 50  0001 C CNN
+F 3 "~" H 1250 4000 50  0001 C CNN
+	1    1250 4000
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 601270CB
+P 1450 4100
+F 0 "#PWR0106" H 1450 3850 50  0001 C CNN
+F 1 "GND" H 1455 3927 50  0000 C CNN
+F 2 "" H 1450 4100 50  0001 C CNN
+F 3 "" H 1450 4100 50  0001 C CNN
+	1    1450 4100
 	1    0    0    -1  
 $EndComp
-Text GLabel 9250 2400 0    50   Input ~ 0
-SCL
-Text GLabel 9250 2300 0    50   Input ~ 0
-SDA
 $Comp
-L power:GND #PWR?
-U 1 1 60065C39
-P 8875 2100
-F 0 "#PWR?" H 8875 1850 50  0001 C CNN
-F 1 "GND" H 8880 1927 50  0000 C CNN
-F 2 "" H 8875 2100 50  0001 C CNN
-F 3 "" H 8875 2100 50  0001 C CNN
-	1    8875 2100
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR?
-U 1 1 60065C43
-P 9125 2025
-F 0 "#PWR?" H 9125 1875 50  0001 C CNN
-F 1 "+3V3" V 9140 2153 50  0000 L CNN
-F 2 "" H 9125 2025 50  0001 C CNN
-F 3 "" H 9125 2025 50  0001 C CNN
-	1    9125 2025
+L Device:R R1
+U 1 1 601290C7
+P 1900 4050
+F 0 "R1" H 1970 4096 50  0000 L CNN
+F 1 "R" H 1970 4005 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1830 4050 50  0001 C CNN
+F 3 "~" H 1900 4050 50  0001 C CNN
+	1    1900 4050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9250 2200 9125 2200
+	1450 3900 1575 3900
 Wire Wire Line
-	9125 2200 9125 2025
+	1450 4000 1725 4000
 Wire Wire Line
-	9250 2100 8875 2100
+	1725 4000 1725 4200
+Wire Wire Line
+	1725 4200 1900 4200
+$Comp
+L power:+3V3 #PWR0108
+U 1 1 6012ADEB
+P 1575 3900
+F 0 "#PWR0108" H 1575 3750 50  0001 C CNN
+F 1 "+3V3" H 1590 4073 50  0000 C CNN
+F 2 "" H 1575 3900 50  0001 C CNN
+F 3 "" H 1575 3900 50  0001 C CNN
+	1    1575 3900
+	1    0    0    -1  
+$EndComp
+Connection ~ 1575 3900
+Wire Wire Line
+	1575 3900 1900 3900
+Wire Wire Line
+	1900 4200 2375 4200
+Connection ~ 1900 4200
+Text GLabel 2375 4200 2    50   Input ~ 0
+23
+Text Notes 850  775  0    79   ~ 0
+gpio 17 can optionally be used to control LED D1
+Text Notes 875  1000 0    79   ~ 0
+gpio 23 can optionally be used for 1-wire input
 $EndSCHEMATC

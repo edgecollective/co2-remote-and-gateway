@@ -487,17 +487,6 @@ F 3 "" H 4400 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Switch:SW_Push SW1
-U 1 1 5FDA65F7
-P 4200 4100
-F 0 "SW1" H 4200 4385 50  0000 C CNN
-F 1 "SW_Push" H 4200 4294 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 4200 4300 50  0001 C CNN
-F 3 "~" H 4200 4300 50  0001 C CNN
-	1    4200 4100
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR0121
 U 1 1 5FDC7681
 P 4400 5150
@@ -506,17 +495,6 @@ F 1 "GND" H 4405 4977 50  0000 C CNN
 F 2 "" H 4400 5150 50  0001 C CNN
 F 3 "" H 4400 5150 50  0001 C CNN
 	1    4400 5150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Switch:SW_Push SW0
-U 1 1 5FDC768B
-P 4200 5150
-F 0 "SW0" H 4200 5435 50  0000 C CNN
-F 1 "SW_Push" H 4200 5344 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 4200 5350 50  0001 C CNN
-F 3 "~" H 4200 5350 50  0001 C CNN
-	1    4200 5150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -681,4 +659,26 @@ Text Notes 850  775  0    79   ~ 0
 gpio 17 can optionally be used to control LED D1
 Text Notes 875  1000 0    79   ~ 0
 gpio 23 can optionally be used for 1-wire input
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5FDA65F7
+P 4200 4100
+F 0 "SW1" H 4200 4385 50  0000 C CNN
+F 1 "SW_Push" H 4200 4294 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 4200 4300 50  0001 C CNN
+F 3 "~" H 4200 4300 50  0001 C CNN
+	1    4200 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW0
+U 1 1 5FDC768B
+P 4200 5150
+F 0 "SW0" H 4200 5435 50  0000 C CNN
+F 1 "SW_Push" H 4200 5344 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Tactile_SPST_Angled_PTS645Vx58-2LFS" H 4200 5350 50  0001 C CNN
+F 3 "~" H 4200 5350 50  0001 C CNN
+	1    4200 5150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
